@@ -1,0 +1,35 @@
+
+.bs-head{
+    text-align: center;
+    align-items: center;
+}
+
+.bs-h1{
+    color:black;
+    text-align: center;
+    font-family: 'Public Sans';
+}
+.bs-h2{
+
+    color:rgb(115, 117, 120);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+}
+.bs-b1
+{
+  margin-top: 3%;
+  font-size: 12px;
+  font-family: 'Century Gothic';
+  font-weight: bold;
+  padding: 12px;
+  background-color: white;
+  color:black;
+  border: solid 2px black;
+}
+.bs-b1:hover
+{
+  background-color: black;
+  color: white;
+}
