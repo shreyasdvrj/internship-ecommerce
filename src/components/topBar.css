@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap');
 /* CSS Above This Line is for Google Font Import - Do Not Copy*/
 
-.brand-navigation {
+.tb-brand-navigation {
   background-color: black;
   display: flex;
   justify-content: center;
 }
 
-.content {
+.tb-content {
   width: 960px;
   height: 170px;
   display: flex;
