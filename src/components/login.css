@@ -1,0 +1,11 @@
+.Form {
+    margin-left: 35%;
+}
+
+@media screen and (max-width: 600px) {
+    .Card {
+        width: 15rem;
+    }
+    }
+  
+  
