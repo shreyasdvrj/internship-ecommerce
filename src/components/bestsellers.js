@@ -16,7 +16,7 @@ import CardExample from './cardexample';
             <h1 className="bs-h1">Bestsellers</h1>
             <h2 className="bs-h2">Get all the best books</h2>
             <CardExample></CardExample>
-        <button className="bs-b1">SHOP ALL</button>
+            <button className="bs-b1">SHOP ALL</button>
       </div>
     );
     }

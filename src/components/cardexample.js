@@ -77,7 +77,7 @@ const CardExample = () => {
   };
 
   return (
-    <div className="card">
+    <div className="bs-carasoul">
       <div style={{ width: "100%", position: "relative" }}>
         <ResponsiveContainer
           carouselRef={ref}
@@ -98,20 +98,7 @@ const CardExample = () => {
             );
           }}
         />
-        <Fab
-          className="card-button left"
-          size="small"
-          onClick={() => ref.current?.goBack()}
-        >
-          <KeyboardArrowLeftIcon style={{ fontSize: 30 }} />
-        </Fab>
-        <Fab
-          className="card-button right"
-          size="small"
-          onClick={() => ref.current?.goNext()}
-        >
-          <KeyboardArrowRightIcon style={{ fontSize: 30 }} />
-        </Fab>
+       
       </div>
       <Pagination
         updatePosition={updatePosition}
