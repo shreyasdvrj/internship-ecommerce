@@ -22,11 +22,11 @@ class Signup extends React.Component {
         <br />
         <div className="Form">
         <CDBContainer>
-          <CDBCard style={{ width: "30rem" }}>
+          <CDBCard style={{ width: "50%" }}>
             <CDBCardBody className="mx-4">
               <div
                 className="text-center text-white"
-                style={{ background: "#3dcd5b" }}
+                style={{ background: "#1F7A8C" }}
               >
                 <p className="h5 mt-2 py-4 font-weight-bold"> Sign up </p>
               </div>
@@ -61,8 +61,8 @@ class Signup extends React.Component {
                 type="password"
               />
 
-<CDBBtn color="dark" outline className="btn-block my-3 mx-0">
-                Sign in
+<CDBBtn color="dark" outline className="btn-block my-3 mx-auto">
+                Register
               </CDBBtn>
               <p className="text-center m-0">
                 Already have an account?{" "}

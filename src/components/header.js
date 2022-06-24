@@ -11,7 +11,7 @@ class Header extends React.Component {
             <span>Get all the best books here on this site!</span>
 
             <span>
-              <a href="#">Support</a>
+              <a id="support" href="#">Support</a>
             </span>
           </div>
         </header>

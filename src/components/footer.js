@@ -10,7 +10,7 @@ const FooterPage = () => {
       color="unique-color-dark"
       className="page-footer font-small pt-0"
     >
-      <div style={{ backgroundColor: "#3dcd5b" }}>
+      <div style={{ backgroundColor: "#7EBDC2" }}>
         <MDBContainer fluid className="text-center text-md-left">
           <MDBRow className="py-4 d-flex align-items-center">
             <MDBCol
@@ -79,7 +79,7 @@ const FooterPage = () => {
               <a href="#!">New Releases</a>
             </p>
             <p>
-              <a href="#!">Fiction</a>
+              <a href="/login">Fiction</a>
             </p>
             <p>
               <a href="#!">Non Fiction</a>

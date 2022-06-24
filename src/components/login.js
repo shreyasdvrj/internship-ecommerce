@@ -26,7 +26,7 @@ class Login extends React.Component {
             
             <CDBCardBody className="mx-4">
             <div
-              style={{ background: "#3dcd5b" }}
+              style={{ background: "#1F7A8C" }}
               className="text-center text-white"
             >
               <p className="h5 mt-2 py-4 font-weight-bold">Sign in</p>
@@ -37,12 +37,14 @@ class Login extends React.Component {
                 placeholder="Password"
                 type="password"
               />
-              <div className="mt-5 d-flex flex-wrap justify-content-center align-items-center">
+              <div className="mt-3 d-flex flex-wrap justify-content-center align-items-center">
                 <CDBLink to="#">Forgot Password ?</CDBLink>
-              </div>
-              <CDBBtn color="dark" outline className="btn-block my-3 mx-0">
+              </div><div>
+              <CDBBtn color="dark" outline className="btn-block my-3 mx-auto align-items-center ">
                 Sign in
               </CDBBtn>
+              </div>
+              <hr />
               <p className="text-center">
                 Not a member?{" "}
                 <CDBLink className="d-inline p-0" to="/signup">
