@@ -1,6 +1,6 @@
 
 import './bestsellers.css';
-import React, {StyleSheet, useState} from 'react'
+import React, {useState} from 'react'
 import 'react-stacked-carousel/dist/index.css';
 import CardExample from './cardexample';
 

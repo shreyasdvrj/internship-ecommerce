@@ -3,9 +3,6 @@ import {
   StackedCarousel,
   ResponsiveContainer
 } from "react-stacked-center-carousel";
-import Fab from "@material-ui/core/Fab";
-import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import "./Slide.css";
 import { Slide } from "./Slide";
 
