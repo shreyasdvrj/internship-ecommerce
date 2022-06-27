@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./header";
-import Navbar from "./navbar";
-import Footer from "./footer";
+import Header from "../../components/Header/header";
+import Navbar from "../../components/Navbar/navbar";
+import Footer from "../../components/Footer/footer";
 import {
   CDBInput,
   CDBCard,
@@ -10,7 +10,7 @@ import {
   CDBLink,
   CDBContainer,
 } from "cdbreact";
-import Waves from "./wave"
+import Waves from "../../components/Wave/wave"
 import "./login.css"
 
 class Login extends React.Component {

@@ -1,5 +1,5 @@
 import React from "react";
-import logoImg from "../logo.png"
+import logoImg from "../../assets/logo.png"
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
 
@@ -41,13 +41,15 @@ export default function Navigation() {
         />
         <Button bsClass="custom-btn" variant="outline-primary" size="sm">Search</Button>
       </Form>
-          </Navbar.Collapse>
-        </Container>
-        <Nav className="mx-5">
+      <Nav className="mx-3">
               <Nav.Link href="/cart">Cart</Nav.Link>
               <Nav.Link href="/signup">Signup</Nav.Link>
               <Nav.Link href="/login">Login</Nav.Link>
         </Nav>
+          </Navbar.Collapse>
+          
+        </Container>
+        
       </Navbar>
     </div>
   );
