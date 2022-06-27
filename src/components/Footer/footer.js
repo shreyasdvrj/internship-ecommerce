@@ -23,18 +23,15 @@ const FooterPage = () => {
               </h6>
             </MDBCol>
             <MDBCol md="6" lg="7" className="text-center text-md-right">
-              <a className="fb-ic ml-0">
-                <i className="fab fa-facebook-f white-text mr-lg-4"> </i>
-              </a>
+            
+              &nbsp;&nbsp;&nbsp;
               <a className="tw-ic">
-                <i className="fab fa-twitter white-text mr-lg-4"> </i>
-              </a>
-              <a className="gplus-ic">
-                <i className="fab fa-google-plus-g white-text mr-lg-4"> </i>
-              </a>
+                <i className="fab fa-github white-text mr-lg-4"> </i>
+              </a>&nbsp;&nbsp;&nbsp;
+            
               <a className="li-ic">
                 <i className="fab fa-linkedin-in white-text mr-lg-4"> </i>
-              </a>
+              </a>&nbsp;&nbsp;&nbsp;
               <a className="ins-ic">
                 <i className="fab fa-instagram white-text mr-lg-4"> </i>
               </a>
@@ -58,7 +55,7 @@ const FooterPage = () => {
             <form action="">
               <div className="row d-flex justify-content-center">
                 <div className="d-grid gap-2 d-md-block">
-                  <CDBInput placeholder="Email" type="email" icon={<i className="fa fa-email text-dark"></i>} />
+                  <CDBInput placeholder="Email" type="email" icon={<i className="fab fa-email text-dark"></i>} />
                   <MDBBtn color="green" size="sm">Register</MDBBtn>
                 </div>
               </div>
@@ -73,19 +70,19 @@ const FooterPage = () => {
               style={{ width: "60px" }}
             />
             <p>
-              <a href="#!">Bestsellers</a>
+              <a href="/best">Bestsellers</a>
             </p>
             <p>
-              <a href="#!">New Releases</a>
+              <a href="/new">New Releases</a>
             </p>
             <p>
-              <a href="/login">Fiction</a>
+              <a href="/exploreFiction">Fiction</a>
             </p>
             <p>
-              <a href="#!">Non Fiction</a>
+              <a href="/exploreNonFiction">Non Fiction</a>
             </p>
             <p>
-              <a href="#!">Gift Cards</a>
+              <a href="/gift">Gift Cards</a>
             </p>
           </MDBCol>
           <MDBCol md="4" lg="3" xl="3" className="mb-4">
@@ -97,16 +94,16 @@ const FooterPage = () => {
               style={{ width: "60px" }}
             />
             <p>
-              <a href="#!">Your Account</a>
+              <a href="/profile">Your Account</a>
             </p>
             <p>
-              <a href="#!">Order Status</a>
+              <a href="/order">Order Status</a>
             </p>
             <p>
-              <a href="#!">Returns and Refunds</a>
+              <a href="/returns">Returns and Refunds</a>
             </p>
             <p>
-              <a href="#!">Contact Us</a>
+              <a href="/contact">Contact Us</a>
             </p>
           </MDBCol>
           <MDBCol md="5" lg="4" xl="4" className="mb-4">
@@ -118,13 +115,13 @@ const FooterPage = () => {
               style={{ width: "60px" }}
             />
             <p>
-              <a href="#!">About Us</a>
+              <a href="/about">About Us</a>
             </p>
             <p>
-              <a href="#!">Responsibilites</a>
+              <a href="/responsibilities">Responsibilities</a>
             </p>
             <p>
-              <a href="#!">Explore</a>
+              <a href="exploreFiction">Explore</a>
             </p>
           </MDBCol>
         </MDBRow>

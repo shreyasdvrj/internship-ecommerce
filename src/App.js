@@ -11,6 +11,8 @@ import Signup from "./pages//SignUp/signup";
 import ExploreFiction from "./pages/Fiction/exploreFiction";
 import ExploreNonFiction from "./pages/NonFiction/exploreNonFiction";
 
+// import Product from "./components/Product/product";
+
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
           <Route path="/exploreNonFiction">
             <ExploreNonFiction/>
           </Route>
+
         </Switch>
       </BrowserRouter>
     </div>
