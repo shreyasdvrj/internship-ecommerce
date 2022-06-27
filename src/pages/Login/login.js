@@ -22,7 +22,7 @@ class Login extends React.Component {
         <br />
         <div className="Form">
         <CDBContainer>
-          <CDBCard className="Card" style={{ width: "50%" }}>
+          <CDBCard className="Login" style={{ width: "50%" }}>
             
             <CDBCardBody className="mx-4">
             <div

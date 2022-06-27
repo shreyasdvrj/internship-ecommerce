@@ -3,6 +3,9 @@
     margin-left: 5%;
     margin-top: 5%;
     align-items: left;
-    width: 13%;
+    width: 20%;
     text-align: left;
+}
+.filterHeading{
+    font-weight: bold;
 }

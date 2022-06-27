@@ -1,12 +1,10 @@
 import React from "react";
-import './filters.css';
-// import "bootstrap/dist/css/bootstrap.css";
 import { MDBCheckbox } from 'mdb-react-ui-kit';
 
 class FictionFilters extends React.Component {
     render() {
         return (
-            <div className="filters">
+            <div><p className="filterHeading">Categories</p>
                 <MDBCheckbox name='fantasy' value='' label='Fantasy' />
                 <MDBCheckbox name='romance' value=''  label='Romance' />
                 <MDBCheckbox name='historical' value=''  label='Historical' />
