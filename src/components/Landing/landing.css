@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,600,700&display=swap');
+
 .firstpage
 {
   background-image: url('../../books1.jpg');
@@ -9,7 +11,7 @@
   overflow: auto;
 }
 .text{
-  font-family: "Montserrat";
+  font-family: "Merriweather";
   margin-top: 7%;
   margin-left: 35%;
   width: 30%;
@@ -17,7 +19,6 @@
   font-size: xx-large;
   font-weight: bolder;
   color: black;
-  font-family: 'Public Sans';
   background-color: white;
   border: 3px solid black;
   padding: 1%;
