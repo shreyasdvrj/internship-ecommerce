@@ -70,19 +70,19 @@ const FooterPage = () => {
               style={{ width: "60px" }}
             />
             <p>
-              <a href="/best">Bestsellers</a>
+              <a style={{textDecoration: 'None'}} href="/best">Bestsellers</a>
             </p>
             <p>
-              <a href="/new">New Releases</a>
+              <a style={{textDecoration: 'None'}} href="/new">New Releases</a>
             </p>
             <p>
-              <a href="/exploreFiction">Fiction</a>
+              <a style={{textDecoration: 'None'}} href="/exploreFiction">Fiction</a>
             </p>
             <p>
-              <a href="/exploreNonFiction">Non Fiction</a>
+              <a style={{textDecoration: 'None'}} href="/exploreNonFiction">Non Fiction</a>
             </p>
             <p>
-              <a href="/gift">Gift Cards</a>
+              <a style={{textDecoration: 'None'}} href="/gift">Gift Cards</a>
             </p>
           </MDBCol>
           <MDBCol md="4" lg="3" xl="3" className="mb-4">
@@ -94,16 +94,16 @@ const FooterPage = () => {
               style={{ width: "60px" }}
             />
             <p>
-              <a href="/profile">Your Account</a>
+              <a style={{textDecoration: 'None'}} href="/profile">Your Account</a>
             </p>
             <p>
-              <a href="/order">Order Status</a>
+              <a style={{textDecoration: 'None'}} href="/order">Order Status</a>
             </p>
             <p>
-              <a href="/returns">Returns and Refunds</a>
+              <a style={{textDecoration: 'None'}} href="/returns">Returns and Refunds</a>
             </p>
             <p>
-              <a href="/contact">Contact Us</a>
+              <a style={{textDecoration: 'None'}} href="/contact">Contact Us</a>
             </p>
           </MDBCol>
           <MDBCol md="5" lg="4" xl="4" className="mb-4">
@@ -115,13 +115,13 @@ const FooterPage = () => {
               style={{ width: "60px" }}
             />
             <p>
-              <a href="/about">About Us</a>
+              <a style={{textDecoration: 'None'}} href="/about">About Us</a>
             </p>
             <p>
-              <a href="/responsibilities">Responsibilities</a>
+              <a style={{textDecoration: 'None'}} href="/responsibilities">Responsibilities</a>
             </p>
             <p>
-              <a href="exploreFiction">Explore</a>
+              <a style={{textDecoration: 'None'}} href="exploreFiction">Explore</a>
             </p>
           </MDBCol>
         </MDBRow>

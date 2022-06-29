@@ -39,7 +39,7 @@ export default function Navigation() {
           className="me-2 my-2 py-0"
           aria-label="Search"
         />
-        <Button bsClass="custom-btn" variant="outline-primary" size="sm">Search</Button>
+        <Button bsClass="custom-btn" variant="outline-dark" size="sm">Search</Button>
       </Form>
       <Nav className="mx-3">
               <Nav.Link href="/cart">Cart</Nav.Link>

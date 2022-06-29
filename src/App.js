@@ -13,6 +13,7 @@ import ExploreNonFiction from "./pages/NonFiction/exploreNonFiction";
 import ProductDetail from "./components/Product/productDetail";
 import Bestsellers from "./pages/Bestsellers/bestsellers";
 import NewReleases from "./pages/NewReleases/newReleases";
+import Profile from "./pages/Profile/profile";
 
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <Signup />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
           <Route path="/product">
             <ProductDetail />
