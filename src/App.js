@@ -11,6 +11,7 @@ import Signup from "./pages//SignUp/signup";
 import ExploreFiction from "./pages/Fiction/exploreFiction";
 import ExploreNonFiction from "./pages/NonFiction/exploreNonFiction";
 import ProductDetail from "./components/Product/productDetail";
+import PostReview from "./components/Product/postReview";
 import Bestsellers from "./pages/Bestsellers/bestsellers";
 import NewReleases from "./pages/NewReleases/newReleases";
 
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route path="/new">
             <NewReleases />
+          </Route>
+          <Route path="/postReview">
+            <PostReview />
           </Route>
 
         </Switch>

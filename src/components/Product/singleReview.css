@@ -1,0 +1,19 @@
+.single-review{
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-bottom: 5%;
+    width: 45%;
+    text-align: left;
+}
+
+.four-star{
+    height: 20%;
+    width: 20%;
+}
+.review-heading{
+    font-size: large;
+    font-weight: bold;
+}
+.review-text{
+    font-size: medium;
+}

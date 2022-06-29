@@ -5,6 +5,7 @@ import Header from "../../components/Header/header";
 import Navbar from "../../components/Navbar/navbar";
 import FooterPage from "../../components/Footer/footer";
 import ProductInfo from "./productInfo";
+import ReviewSection from "./reviewSection";
 
 const name = 'The Handmaid\'s Tale';
 const author = 'By Margaret Atwood';
@@ -25,6 +26,7 @@ class ProductDetail extends React.Component {
                     </div>
 
                 </div>
+                <ReviewSection></ReviewSection>
                 <FooterPage></FooterPage>
             </div>
 
