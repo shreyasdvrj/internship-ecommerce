@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import './productCard.css';
 import { Button } from "react-bootstrap";
 import img from './bookimg.jpg'
+import { Link } from 'react-router-dom';
 
 class ProductCard extends React.Component {
     render() {
@@ -15,7 +16,10 @@ class ProductCard extends React.Component {
                         <Card.Text style = {{'font-style':'italic'}}>
                             By Margaret Atwood
                         </Card.Text>
+                        <Link to="/product">
                         <Button variant="dark" size="sm">View</Button>
+                        </Link>
+                        
                     </Card.Body>
                 </Card>
             </div>
