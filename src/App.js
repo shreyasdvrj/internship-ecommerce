@@ -15,6 +15,11 @@ import PostReview from "./components/Product/postReview";
 import Bestsellers from "./pages/Bestsellers/bestsellers";
 import NewReleases from "./pages/NewReleases/newReleases";
 import Profile from "./pages/Profile/profile";
+import Summary from "./pages/Checkout/summary"
+import Address from "./pages/Checkout/address"
+import Payment from "./pages/Checkout/payment";
+import Sidebar from "./components/Sidebar/sidenav";
+import ProductList from "./components/Orders/product";
 
 
 function App() {
@@ -23,8 +28,10 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Header />
-            <Navigation />
+            <div style={{ position: "sticky" }}>
+              <Header />
+              <Navigation />
+            </div>
             <Landing />
             <BestsellersCarousel></BestsellersCarousel>
             <Footer />
@@ -41,11 +48,23 @@ function App() {
           <Route path="/product">
             <ProductDetail />
           </Route>
+          <Route path="/cart">
+            <ProductDetail />
+          </Route>
+          <Route path="/checkout/summary">
+            <Summary />
+          </Route>
+          <Route path="/checkout/address">
+            <Address />
+          </Route>
+          <Route path="/checkout/payment">
+            <Payment />
+          </Route>
           <Route path="/exploreFiction">
             <ExploreFiction />
           </Route>
           <Route path="/exploreNonFiction">
-            <ExploreNonFiction/>
+            <ExploreNonFiction />
           </Route>
           <Route path="/best">
             <Bestsellers />

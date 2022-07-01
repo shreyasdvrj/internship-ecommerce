@@ -1,37 +1,61 @@
-import React from 'react';
-import {
-  CDBSidebar,
-  CDBSidebarContent,
-  CDBSidebarHeader,
-  CDBSidebarMenu,
-  CDBSidebarMenuItem,
-  CDBSidebarFooter,
-} from 'cdbreact';
+import { Link } from "react-router-dom";
+import React from "react";
+import "./sidenav.css";
 
-const Sidebar = () => {
+import OrderHistory from "../Orders/orderHistory";
+import Account from "../Account/account";
+import ProductList from "../Orders/product";
+
+export default function () {
+  const category = window.location.pathname.split("/")[2];
+  console.log(category)
   return (
-      <CDBSidebar>
-        <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>Contrast</CDBSidebarHeader>
-        <CDBSidebarContent>
-          <CDBSidebarMenu>
-            <CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="sticky-note">Components</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="credit-card" iconType="solid">
-              Metrics
-            </CDBSidebarMenuItem>
-          </CDBSidebarMenu>
-        </CDBSidebarContent>
-
-        <CDBSidebarFooter style={{ textAlign: 'center' }}>
-          <div
-            className="sidebar-btn-wrapper"
-            style={{padding: '20px 5px'}}
+    <div className="page">
+      <div className="product-list-div">
+        <div className="filter">
+          <Link
+            className={
+              category === "account" ? "curr-filter-link" : "filter-link"
+            }
+            to="/profile/account"
           >
-            Sidebar Footer
-          </div>
-        </CDBSidebarFooter>
-      </CDBSidebar>
+            Account
+          </Link>
+          <Link
+            className={
+              category === "orders" ? "curr-filter-link" : "filter-link"
+            }
+            to="/profile/orders"
+          >
+            Your Orders
+          </Link>
+          <Link
+            className={
+              category === "settings" ? "curr-filter-link" : "filter-link"
+            }
+            to="/profile/settings"
+          >
+            Settings
+          </Link>
+        </div>
+        <div className="product-list">
+            {(category === undefined || category === "account") && (
+              <div className="shop-product-container">
+                <Account />
+              </div>
+            )}
+            {(category === "orders") && (
+              <div className="shop-product-container">
+                <ProductList />
+              </div>
+            )}
+            {(category === "settings") && (
+              <div className="shop-product-container">
+                Settings
+              </div>
+            )}
+            </div>
+      </div>
+    </div>
   );
-};
-
-export default Sidebar;
+}

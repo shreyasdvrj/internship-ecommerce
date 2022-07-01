@@ -1,0 +1,164 @@
+/* 
+.blogpost {
+    background-color: aqua;
+    display: flex;
+    width: 670px;
+    height: 250px;
+    border-radius: 7px;
+    perspective: 2300px;
+    overflow: hidden;
+    word-wrap: word-wrap;
+  }
+  
+  .blogpost:hover > .img-part .head-img {
+    transform: scale(1.1);
+  }
+  
+  .img-part {
+    width: 50%;
+    position: relative;
+  }
+  
+  .head-img {
+    height: 250px;
+    width: 400px;
+    background: url(http://placekitten.com/301/301);
+    transition: transform 0.5s ease;
+  }
+  
+  .tags {
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    background-color: rgba(0, 255, 255, 0.575);
+    height: 250px;
+    width: 320px;
+    padding-right: 50px;
+    padding-left: 10px;
+    margin-left: -380px;
+    transition: transform 0.5s ease;
+  }
+  
+  .blogpost:hover > .img-part .tags {
+    transform: translateX(375px);
+  }
+  
+  .tags p {
+    background-color: white;
+    padding: 5px;
+    display: inline-block;
+    margin-top: 13px;
+    margin-left: 5px;
+    border-radius: 5px;
+  }
+  
+  .desp {
+    background-color: white;
+    padding-left: 6px;
+    width: 50%;
+    margin-right: -21px;
+    transform: skewX(-10deg);
+    right: 0px;
+    border-left: 10px solid transparent;
+    border-right: 40px solid transparent;
+  }
+  
+  .desp > * {
+    transform: skewX(10deg);
+    margin-left: 10px;
+  }
+  
+  .desp p {
+    margin: 20px;
+    margin-left: 25px;
+  }
+  
+  .desp button {
+    border: 1px solid aqua;
+    border-radius: 5px;
+    background-color: white;
+    padding: 9px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .desp button:hover {
+    background-color: aqua;
+  }
+  
+  .view-button {
+    margin-left: 37px;
+  }
+  
+  .code-button {
+    margin-left: 15px;
+  }
+  
+  @media screen and (max-width: 725px) {
+    .blogpost {
+      height: 370px;
+      width: 270px;
+      flex-direction: column;
+    }
+  
+    .head-img {
+      height: 135px;
+    }
+  
+    .desp {
+      transform: skewX(0deg);
+      width: 100%;
+      height: 100%;
+      padding: 0px 10px;
+    }
+  
+    .desp > * {
+      transform: skew(0deg);
+    }
+  
+    .desp h1 {
+      margin-left: -3px;
+      font-size: 1.5rem;
+    }
+  
+    .desp p {
+      margin-left: -2px;
+    }
+  
+    .desp button {
+      margin: 0px;
+      margin-left: -1px;
+      margin-right: 15px;
+      font-size: 0.9rem;
+    }
+  
+    .tags {
+      display: none;
+    }
+  }
+   */
+   /* .product-card {
+    width: 100%;
+  }
+  
+  .product-card-img {
+    border-radius: 5px;
+    width: 100%;
+    min-height: 400px;
+    background-position: 50% 50%;
+    background-size: cover;
+  }
+  
+  .details-link {
+    text-decoration: none;
+    color: white;
+    background-color: #eb5757;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-weight: 500;
+  }
+  
+  .details-link:hover {
+    background-color: #222;
+  }
+   */
