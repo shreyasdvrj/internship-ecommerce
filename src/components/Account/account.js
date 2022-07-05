@@ -7,12 +7,9 @@ class Account extends React.Component {
     return (
       <div>
         <CDBContainer>
-        <CDBInput disabled="true" type="email" placeholder="Your E-mail" />
-          <CDBInput
-            placeholder="Email"
-            type="email"
-            icon={<i className="fa fa-email text-dark"></i>}
-          />
+        <CDBInput disabled="true" type="email" placeholder="Username" />
+        <CDBInput disabled="true" type="email" placeholder="Email" />
+         
         </CDBContainer>
       </div>
     );

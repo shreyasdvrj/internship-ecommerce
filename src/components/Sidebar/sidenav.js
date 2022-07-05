@@ -46,7 +46,7 @@ export default function () {
             )}
             {(category === "orders") && (
               <div className="shop-product-container">
-                <ProductList />
+                <OrderHistory />
               </div>
             )}
             {(category === "settings") && (

@@ -27,7 +27,7 @@ const data = [
 
 function Pagination(props) {
   const { centerSlideDataIndex, updatePosition } = props;
-  console.log("🚀 ~ centerSlideDataIndex--000", centerSlideDataIndex);
+
   return (
     <div
       style={{
