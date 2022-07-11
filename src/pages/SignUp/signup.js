@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Header from "../../components/Header/header";
 import Navbar from "../../components/Navbar/navbar";
@@ -18,6 +19,7 @@ import Waves from "../../components/Wave/wave";
 import "../Login/login.css";
 
 const Signup = () => {
+  const history = useHistory();
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",
@@ -32,43 +34,42 @@ const Signup = () => {
       [name]: value,
     });
   };
-  const handleSubmit = async () => {
-    // store the states in the form data
-    const loginFormData = new FormData();
-    loginFormData.append("firstname", user.firstname);
-    loginFormData.append("lastname", user.lastname);
-    loginFormData.append("email", user.email);
-    loginFormData.append("password", user.password);
-    loginFormData.append("password2", user.password2);
-    console.log(loginFormData);
-    try {
-      // make axios post request
-      const response = await axios({
-        method: "post",
-        url: "localhost:5000/api/register",
-        data: loginFormData,
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   //register function
   const egister = () => {
     const { firstname, lastname, email, password, password2 } = user;
     console.log(user);
-    toast("Register!");
     if (firstname && lastname && email && password && password2) {
       axios({
         method: "POST",
         url: "http://localhost:5000/api/register",
         data: user,
         headers: { "Content-Type": "application/json" },
-      }).then((res) => toast("Success"));
+      })
+        .then((res) => {
+          toast("Success");
+          console.log(res);
+          console.log(res.data.message);
+          history.push("/login");
+          console.log("To login");
+          
+        })
+        .catch((res,error) => {
+          console.log("Problem submitting New Post", error);
+          console.log(res)
+          setUser(() => "");
+          // toast("Problem registering, email already taken");
+          window.location.reload();
+          console.log("To login");
+        });
+      //  window.location.href='/login'
+     
     } else {
-      alert("invalid input");
+      alert("Reload Page");
     }
+  
   };
+
   return (
     <div>
       <Header />

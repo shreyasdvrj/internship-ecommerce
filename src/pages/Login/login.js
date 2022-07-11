@@ -1,8 +1,8 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import {useHistory} from "react-router-dom"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
 import Header from "../../components/Header/header";
 import Navbar from "../../components/Navbar/navbar";
 import Footer from "../../components/Footer/footer";
@@ -32,14 +32,37 @@ const Login = () => {
 
   const login = () => {
     const { email, password } = user;
-    console.log(user);
     if (email && password) {
       axios({
         method: "POST",
         url: "http://localhost:5000/api/login",
         data: user,
         headers: { "Content-Type": "application/json" },
-      }).then((res) => toast(res.statusText));
+      }).then((res) => {
+        console.log(res)
+        if (res.data.isAuth) {
+          toast("Logged In");
+          axios({
+            method: "GET",
+            url: "http://localhost:5000/api/profile",
+          }).then((res) => {
+            console.log(res)
+        })
+        .catch((error) => {
+          console.log("error");
+          console.log(error)
+        })
+      }
+        else
+        {
+          toast(res.data.message);
+          setUser(() => "");
+        }
+      })
+      .catch((res, error) => {
+        console.log(error);
+        console.log(res);
+      });
     } else {
       alert("invalid input");
     }

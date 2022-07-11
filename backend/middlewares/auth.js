@@ -7,7 +7,7 @@ let auth =(req,res,next)=>{
         if(!user) return res.json({
             error :true
         });
-
+        console.log("IN AUTH")
         req.token= token;
         req.user=user;
         next();

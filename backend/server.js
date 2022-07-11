@@ -77,7 +77,7 @@ app.post("/api/login", function (req, res) {
         if (!user)
           return res.json({
             isAuth: false,
-            message: " Auth failed ,email not found",
+            message: " Auth failed, email not found",
           });
 
         user.comparepassword(req.body.password, (err, isMatch) => {
@@ -122,5 +122,5 @@ app.get("/api/logout", auth, function (req, res) {
 // listening port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`app is live at ${PORT}`);
+  console.log(`App is live at ${PORT}`);
 });

@@ -24,57 +24,7 @@ import Sidebar from "./components/Sidebar/sidenav";
 import ProductList from "./components/Orders/product";
 
 function App() {
-  const [user, setUser] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-    password2: "",
-  });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser({
-      ...user, //spread operator
-      [name]: value,
-    });
-  };
-  const handleSubmit = async () => {
-    // store the states in the form data
-    const loginFormData = new FormData();
-    loginFormData.append("firstname", user.firstname);
-    loginFormData.append("lastname", user.lastname);
-    loginFormData.append("email", user.email);
-    loginFormData.append("password", user.password);
-    loginFormData.append("password2", user.password2);
-    console.log(loginFormData)
-    try {
-      // make axios post request
-      const response = await axios({
-        method: "post",
-        url: "localhost:5000/api/register",
-        data: loginFormData,
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  //register function
-  const egister = () => {
-    const { firstname, lastname, email, password, password2 } = user;
-    console.log(user);
-    if (firstname && lastname && email && password && password2) {
-      axios({
-        method: "POST",
-        url: "http://localhost:5000/api/register",
-        data: user,
-        headers: { "Content-Type": "application/json" },
-      }).then((res) => console.log(res));
-    } else {
-      alert("invalid input");
-    }
-  };
-  return (
+    return (
     <div className="App">
       <BrowserRouter>
         <Switch>
@@ -84,47 +34,6 @@ function App() {
               <Navigation />
             </div>
             <Landing />
-        
-            <form action="#" className="form">
-              <input
-                type="text"
-                name="firstname"
-                value={user.firstanme}
-                onChange={handleChange}
-                placeholder="firstname"
-              />
-              <input
-                type="text"
-                name="lastname"
-                value={user.lastname}
-                onChange={handleChange}
-                placeholder="lastname"
-              />
-              <input
-                type="text"
-                name="email"
-                value={user.email}
-                onChange={handleChange}
-                placeholder="Email"
-              />
-              <input
-                type="password"
-                name="password"
-                value={user.password}
-                onChange={handleChange}
-                placeholder="password"
-              />
-              <input
-                type="password"
-                name="password2"
-                value={user.password2}
-                onChange={handleChange}
-                placeholder="password2"
-              />
-              <button type="submit" onClick={egister}>
-                register
-              </button>
-            </form>
             <BestsellersCarousel></BestsellersCarousel>
             <Footer />
           </Route>
