@@ -21,11 +21,11 @@ import "../Login/login.css";
 const Signup = () => {
   const history = useHistory();
   const [user, setUser] = useState({
-    firstname: "",
-    lastname: "",
+    username: "",
+    // lastname: "",
     email: "",
     password: "",
-    password2: "",
+    // password2: "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,12 +37,12 @@ const Signup = () => {
 
   //register function
   const egister = () => {
-    const { firstname, lastname, email, password, password2 } = user;
+    const { username, email, password } = user;
     console.log(user);
-    if (firstname && lastname && email && password && password2) {
+    if (username && email && password) {
       axios({
         method: "POST",
-        url: "http://localhost:5000/api/register",
+        url: "http://localhost:5000/users/register",
         data: user,
         headers: { "Content-Type": "application/json" },
       })
@@ -88,20 +88,20 @@ const Signup = () => {
               <form action="#">
                 <CDBInput
                   material
-                  name="firstname"
-                  placeholder="Firstname"
+                  name="username"
+                  placeholder="Username"
                   type="text"
-                  value={user.firstname}
+                  value={user.username}
                   onChange={handleChange}
                 />
-                <CDBInput
+                {/* <CDBInput
                   material
                   name="lastname"
                   placeholder="Lastname"
                   type="text"
                   value={user.lastname}
                   onChange={handleChange}
-                />
+                /> */}
                 <CDBInput
                   material
                   name="email"
@@ -118,14 +118,14 @@ const Signup = () => {
                   value={user.password}
                   onChange={handleChange}
                 />
-                <CDBInput
+                {/* <CDBInput
                   material
                   name="password2"
                   placeholder="Confirm Password"
                   type="password"
                   value={user.password2}
                   onChange={handleChange}
-                />
+                /> */}
 
                 <CDBBtn
                   color="dark"

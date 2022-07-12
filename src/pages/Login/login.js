@@ -19,7 +19,7 @@ import "./login.css";
 
 const Login = () => {
   const [user, setUser] = useState({
-    name: "",
+    email: "",
     password: "",
   });
   const handleChange = (e) => {
@@ -35,33 +35,33 @@ const Login = () => {
     if (email && password) {
       axios({
         method: "POST",
-        url: "http://localhost:5000/api/login",
+        url: "http://localhost:5000/users/login",
         data: user,
         headers: { "Content-Type": "application/json" },
       }).then((res) => {
         console.log(res)
-        if (res.data.isAuth) {
-          toast("Logged In");
-          axios({
-            method: "GET",
-            url: "http://localhost:5000/api/profile",
-          }).then((res) => {
-            console.log(res)
-        })
-        .catch((error) => {
-          console.log("error");
-          console.log(error)
-        })
-      }
-        else
-        {
-          toast(res.data.message);
-          setUser(() => "");
-        }
+      //   if (res.data.isAuth) {
+      //     toast("Logged In");
+      //     axios({
+      //       method: "GET",
+      //       url: "http://localhost:5000/users/profile",
+      //     }).then((res) => {
+      //       console.log(res)
+      //   })
+      //   .catch((error) => {
+      //     console.log("error");
+      //     console.log(error)
+      //   })
+      // }
+      //   else
+      //   {
+      //     toast(res.data.message);
+      //     setUser(() => "");
+      //   }
       })
       .catch((res, error) => {
         console.log(error);
-        console.log(res);
+        console.log(res.msg.data);
       });
     } else {
       alert("invalid input");
