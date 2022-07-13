@@ -37,9 +37,10 @@ const Login = () => {
         method: "POST",
         url: "http://localhost:5000/users/login",
         data: user,
+        withCredentials: true,
         headers: { "Content-Type": "application/json" },
       }).then((res) => {
-        console.log(res)
+        console.log(res.data.isAuth)
       //   if (res.data.isAuth) {
       //     toast("Logged In");
       //     axios({

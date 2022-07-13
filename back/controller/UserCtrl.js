@@ -38,15 +38,16 @@ const userCtrl = {
         expiresIn: "1h",
       });
       console.log(token);
-      res.cookie('jwt', token, {httpOnly: true})
+      res.cookie('jwt', token)
       res.json({ user: user._id, isAuth: true, msg: "Logged In"});
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
-  verifiedToken: (req, res) => {
+  verifiedToken: async (req, res) => {
     try {
       const token = req.cookies.jwt;
+      console.log("No token")
       if (!token) return res.send(false);
 
       jwt.verify(token, process.env.TOKEN_SECRET, async (err, verified) => {
@@ -54,7 +55,7 @@ const userCtrl = {
 
         const user = await Users.findById(verified.id);
         if (!user) return res.send(false);
-
+        console.log("Yes token")
         return res.send(true);
       });
     } catch (err) {

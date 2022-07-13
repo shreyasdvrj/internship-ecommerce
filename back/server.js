@@ -7,9 +7,12 @@ const path = require('path')
 var cookies = require("cookie-parser");
 
 const app = express()
-app.use(cors())
 app.use(express.json())
 app.use(cookies());
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}))
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -26,7 +29,7 @@ app.get("/", function (req, res) {
 app.use('/users', userRouter)
 
 //MongoDb connection
-mongoose.connect('mongodb://127.0.0.1:27017/app', { useNewUrlParser : true})
+mongoose.connect('mongodb://127.0.0.1:27017/storyhouse', { useNewUrlParser : true})
 const connection = mongoose.connection;
 
 connection.once('open', function() {
