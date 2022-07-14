@@ -28,6 +28,38 @@ const bookSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    bookFormat: {
+        type: String,
+        required: true
+    },
+    pages: {
+        type: Number,
+        required: true
+    },
+    publisher: {
+        type: String,
+        required: true
+    },
+    publishDate: {
+        type: Date,
+        required: true
+    },
+    numRatings: {
+        type: Number,
+        required: true
+    },
+    ratingsByStars: {
+        type: String,
+        required: true
+    },
+    likedPercent: {
+        type: Number,
+        required: true
+    },
+    coverImg: {
+        type: String,
+        required: true
+    },
     price: {
         type: Number,
         required: true
@@ -78,6 +110,10 @@ const bookSchema = new mongoose.Schema({
     },
     biographies: {
         type: Boolean,
+        required: true
+    },
+    fiction_non_fiction: {
+        type: Number,
         required: true
     },
 

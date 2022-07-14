@@ -5,14 +5,17 @@ import { Button } from "react-bootstrap";
 import img from './bookimg.jpg'
 import { Link } from 'react-router-dom';
 
+
+
 class ProductCard extends React.Component {
     render() {
+        
         return (
             <div className="product-card">
                 <Card style={{ width: '15rem'}}>
                     <Card.Img variant="top" src={img} style= {{'object-fit': 'cover'}}/>
                     <Card.Body>
-                        <Card.Title>The Handmaid's Tale</Card.Title>
+                        <Card.Title>{this.props.name.title}</Card.Title>
                         <Card.Text style = {{'font-style':'italic'}}>
                             By Margaret Atwood
                         </Card.Text>
