@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./profile.css"
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -9,6 +9,7 @@ import User from "../../components/User/user";
 import FooterPage from "../../components/Footer/footer";
 
 import TopBar from "../../components/TopBar/topBar";
+import Login from "../Login/login";
 const Profile = () => {
   const history = useHistory();
   axios({
@@ -18,32 +19,52 @@ const Profile = () => {
   })
     .then((res) => {
       console.log("Works with res")
-      console.log(res)
-      if (res.data) {
-        return (
-          <div>
-            <Header />
-            <Navigation />
-            <TopBar name="Your Account"></TopBar>
-            <div className="profileContent">
-              <Sidebar />
-            </div>
-            <FooterPage />
-          </div>
-        );
-      }
-      else {
-        console.log(res.data);
-        console.log("Login pushed")
-        history.push("/login");
-      }
+      var auth = res.data;
+      // console.log("token",token)
+      console.log("auth",auth)
+      // if (res.data) {
+      //   console.log("In if")
+      //   return (
+      //     <div>
+      //       hello
+      //       <Header />
+      //       <Navigation />
+      //       <TopBar name="Your Account"></TopBar>
+      //       <div className="profileContent">
+      //         <Sidebar />
+      //       </div>
+      //       <FooterPage />
+      //     </div>
+      //   );
+      // }
+      // else {
+      //   console.log(res.data);
+      //   console.log("Login pushed")
+      //   history.push("/login");
+      // }
       
     })
     .catch((res,error) => {
       console.log("Problem ", res, error);
     });
-   
+  var auth = true;
+    return (
+      
+      <div>
+        {auth ? (
+          <>
+          <Header />
+          <Navigation />
+          </>
+        ) : (
+          <Login />
+        )}
+      </div>
+    )
 
 }
 
+// ReactDOM.render(
+//   <Profile />,
+//   document.getElementById('root'));
 export default Profile;

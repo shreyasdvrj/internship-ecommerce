@@ -39,7 +39,9 @@ const userCtrl = {
       });
       console.log(token);
       res.cookie('jwt', token)
+      console.log("Works")
       res.json({ user: user._id, isAuth: true, msg: "Logged In"});
+
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

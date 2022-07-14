@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import Header from "./components/Header/header";
 import Landing from "./components/Landing/landing";
 import BestsellersCarousel from "./components/Bestseller/bestsellersCarousel";
@@ -22,10 +23,21 @@ import Payment from "./pages/Checkout/payment";
 import Register from "./test";
 import Sidebar from "./components/Sidebar/sidenav";
 import ProductList from "./components/Orders/product";
+import Protected from "./Protected";
 
 function App() {
-    return (
+  const [isLoggedIn, setisLoggedIn] = useState(null);
+  const login = () => {
+    var token = Cookies.get("jwt");
+    if (token) setisLoggedIn(true);
+  };
+  const logOut = () => {
+    setisLoggedIn(false);
+  };
+
+  return (
     <div className="App">
+      
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
@@ -43,9 +55,12 @@ function App() {
           <Route path="/signup">
             <Signup />
           </Route>
-          <Route path="/profile">
+          {/* <Route path="/profile">
             <Profile />
-          </Route>
+          </Route> */}
+          {/* <Protected isLoggedIn={isLoggedIn}>
+            <Profile />
+          </Protected> */}
           <Route path="/product">
             <ProductDetail />
           </Route>

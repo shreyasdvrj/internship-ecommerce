@@ -18,6 +18,7 @@ import Waves from "../../components/Wave/wave";
 import "./login.css";
 
 const Login = () => {
+  const history = useHistory();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -40,7 +41,8 @@ const Login = () => {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },
       }).then((res) => {
-        console.log(res.data.isAuth)
+        console.log("login done - ", res);
+        history.push("/profile")
       //   if (res.data.isAuth) {
       //     toast("Logged In");
       //     axios({
@@ -61,8 +63,8 @@ const Login = () => {
       //   }
       })
       .catch((res, error) => {
-        console.log(error);
-        console.log(res.msg.data);
+        console.log("Login error");
+        console.log(res);
       });
     } else {
       alert("invalid input");
