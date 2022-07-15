@@ -116,11 +116,7 @@ const bookSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-},
-    {
-        collection: 'Books'
-    }
 
-);
+})
 
 module.exports = mongoose.model('Books', bookSchema)
