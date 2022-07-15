@@ -4,7 +4,7 @@ const Books = require("../model/BookModel");
 const bookCtrl = {
   getBooks: async (req, res) => {
     try {
-      const book = await Books.find();
+      const book = await Books.find().limit(6);
       res.json(book);
 
     } catch (err) {

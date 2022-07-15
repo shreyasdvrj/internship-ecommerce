@@ -42,7 +42,7 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
       }).then((res) => {
         console.log("login done - ", res);
-        history.push("/")
+        history.push("/profile")
       //   if (res.data.isAuth) {
       //     toast("Logged In");
       //     axios({

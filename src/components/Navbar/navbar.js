@@ -28,7 +28,6 @@ const history = useHistory();
     .then((res) => {
       toast("Logged Out");
       history.push("/")
-      window.location.reload();
       console.log(res);
     })
     .catch((err) => {
