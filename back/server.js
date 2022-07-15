@@ -30,7 +30,7 @@ app.get("/", function (req, res) {
 app.use('/users', userRouter)
 app.use('/Books', bookRouter)
 //MongoDb connection
-mongoose.connect('mongodb://127.0.0.1:27017/StoryHouse', { useNewUrlParser : true})
+mongoose.connect('mongodb://127.0.0.1:27017/storyhouse', { useNewUrlParser : true})
 const connection = mongoose.connection;
 
 connection.once('open', function() {

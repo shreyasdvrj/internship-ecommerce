@@ -26,14 +26,11 @@ import ProductList from "./components/Orders/product";
 import Protected from "./Protected";
 
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState(null);
-  const login = () => {
-    var token = Cookies.get("jwt");
-    if (token) setisLoggedIn(true);
-  };
-  const logOut = () => {
-    setisLoggedIn(false);
-  };
+  var token = Cookies.get("jwt");
+  var loggedIn = false;
+  if (token)
+    loggedIn = true
+  
 
   return (
     <div className="App">
@@ -61,6 +58,20 @@ function App() {
           {/* <Protected isLoggedIn={isLoggedIn}>
             <Profile />
           </Protected> */}
+           {loggedIn ? (
+                <>
+              <Route path="/profile">
+            <Profile />
+          </Route>
+                </>
+              ) : (
+                <>
+                  <Route path="/profile">
+            <Login />
+          </Route>
+                </>
+              )}
+          
           <Route path="/product">
             <ProductDetail />
           </Route>

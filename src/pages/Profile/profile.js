@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./profile.css"
+import "./profile.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Header from "../../components/Header/header";
@@ -18,10 +18,10 @@ const Profile = () => {
     withCredentials: true,
   })
     .then((res) => {
-      console.log("Works with res")
+      console.log("Works with res");
       var auth = res.data;
       // console.log("token",token)
-      console.log("auth",auth)
+      console.log("auth", auth);
       // if (res.data) {
       //   console.log("In if")
       //   return (
@@ -42,27 +42,33 @@ const Profile = () => {
       //   console.log("Login pushed")
       //   history.push("/login");
       // }
-      
     })
-    .catch((res,error) => {
+    .catch((res, error) => {
       console.log("Problem ", res, error);
     });
   var auth = true;
-    return (
-      
-      <div>
-        {auth ? (
-          <>
-          <Header />
-          <Navigation />
-          </>
-        ) : (
-          <Login />
-        )}
+  return (
+    // <div>
+    //   {auth ? (
+    //     <>
+    //     <Header />
+    //     <Navigation />
+    //     </>
+    //   ) : (
+    //     <Login />
+    //   )}
+    // </div>
+    <div>
+      <Header />
+      <Navigation />
+      <TopBar name="Your Account"></TopBar>
+      <div className="profileContent">
+        <Sidebar />
       </div>
-    )
-
-}
+      <FooterPage />
+    </div>
+  );
+};
 
 // ReactDOM.render(
 //   <Profile />,
