@@ -15,7 +15,7 @@ import ExploreNonFiction from "./pages/NonFiction/exploreNonFiction";
 import ProductDetail from "./components/Product/productDetail";
 import PostReview from "./components/Product/postReview";
 import Bestsellers from "./pages/Bestsellers/bestsellers";
-import NewReleases from "./pages/NewReleases/newReleases";
+import AllBooks from "./pages/AllBooks/allBooks";
 import Profile from "./pages/Profile/profile";
 import Summary from "./pages/Checkout/summary";
 import Address from "./pages/Checkout/address";
@@ -85,8 +85,8 @@ function App() {
           <Route path="/best">
             <Bestsellers />
           </Route>
-          <Route path="/new">
-            <NewReleases />
+          <Route path="/all">
+            <AllBooks />
           </Route>
           <Route path="/postReview">
             <PostReview />

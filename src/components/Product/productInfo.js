@@ -14,29 +14,16 @@ class ProductInfo extends React.Component {
             books_list: []
         }
     }
-    componentDidMount = () => {
-        this.getBookList();
-    }
-    getBookList(){
-        axios.get('http://localhost:4000/books')
-        .then((response) => {
-            console.log(response);
-            this.setState({
-                books_list: response.data
-            })
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-    }
+   
     render() {
         const {books_list} = this.state;
-        console.log(typeof(books_list))
+        console.log("books_list", this.props.price);
+        const price = String(this.props.price);
         return (
             <div className='pdiv'>
                 <h1 className="book-name">{this.props.name}</h1>
                 <h2 className="book-author">{this.props.author}</h2>
-                <p className="book-desc">{this.props.price}</p>
+                <p className="book-desc">&#8377;{price}</p>
                 <p className="book-desc">{this.props.desc}</p>
                 <h2 className="book-formats">Formats</h2>
                 <div style={{ 'display': 'flex' }}>

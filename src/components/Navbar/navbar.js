@@ -53,8 +53,8 @@ const history = useHistory();
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
+              <Nav.Link href="/all">All Books</Nav.Link>
               <Nav.Link href="/best">Best Sellers</Nav.Link>
-              <Nav.Link href="/new">New Releases</Nav.Link>
               <NavDropdown title="Genre" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/exploreFiction">
                   Fiction

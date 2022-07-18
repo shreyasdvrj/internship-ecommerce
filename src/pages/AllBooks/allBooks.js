@@ -1,25 +1,25 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import TopBar from "../../components/TopBar/topBar.js";
+import TopBar from "../../components/TopBar/topBar";
 import Header from "../../components/Header/header";
 import Navbar from "../../components/Navbar/navbar";
 import FooterPage from "../../components/Footer/footer";
+import ProductCard from "../../components/Product/productCard"
 import axios from 'axios';
 import PriceFilters from "../../components/Filters/priceFilters";
-import GenreFilters from "../../components/Filters/genreFilters";
-import ProductCard from "../../components/Product/productCard.js";
+import FictionAndNonFictionFilters from "../../components/Filters/fictionAndNonFictionFilters";
 import "../../components/Filters/filters.css"
 
-const str_nonfiction =
-  "Pick from heart-felt memoirs, thought provoking histories and self-help books.";
+const str_newReleases =
+  "Be upto date with our newest releases. Updated every week.";
 
-class ExploreNonFiction extends React.Component {
+class NewReleases extends React.Component {
     constructor(props) {
         super(props);
         this.state = {books: []};
     }
       componentDidMount() {
-        axios.get('http://localhost:5000/Books/Books')
+        axios.get('http://localhost:5000/books/all')
             .then(response => {
                 this.setState({ books: response.data });
             })
@@ -32,23 +32,21 @@ class ExploreNonFiction extends React.Component {
             <div>
                 <Header />
                 <Navbar />
-                <TopBar name="Shop Non-Fiction" value={str_nonfiction}></TopBar>
+                <TopBar name="Shop New Releases" value={str_newReleases}></TopBar>
                 <div style = {{'margin-bottom': '5%'}}>
-                    <div style = {{display: 'flex'}}>
+                    <div style = {{'display': 'flex'}}>
                     <div className="filters">
-                    <GenreFilters></GenreFilters>
-              <p></p>
-              <p></p>
-              <p></p>
-              <PriceFilters></PriceFilters>
+                        <FictionAndNonFictionFilters></FictionAndNonFictionFilters>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <PriceFilters></PriceFilters>
+                        </div>
+                     <div style = {{'display': 'flex', 'flex-wrap': 'wrap'}}>
+                     {this.state.books && this.state.books.map((book) => (
 
-                    </div>
-                    <div style = {{'display': 'flex', 'flex-wrap': 'wrap'}}>
-                    {this.state.books && this.state.books.map((book) => (
-
-                    <ProductCard props = {book} ></ProductCard>
-                    ))} 
-
+<ProductCard props = {book} ></ProductCard>
+))} 
                     </div>
                     </div>
                 </div>
@@ -59,4 +57,4 @@ class ExploreNonFiction extends React.Component {
     }
 }
 
-export default ExploreNonFiction;
+export default NewReleases;

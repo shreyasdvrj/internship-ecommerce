@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBCheckbox } from 'mdb-react-ui-kit';
 
-class FictionFilters extends React.Component {
+class GenreFilters extends React.Component {
     render() {
         return (
             <div><p className="filterHeading">Categories</p>
@@ -18,4 +18,4 @@ class FictionFilters extends React.Component {
     }
 }
 
-export default FictionFilters;
+export default GenreFilters;

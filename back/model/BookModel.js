@@ -60,7 +60,7 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    price: {
+    Price: {
         type: Number,
         required: true
     },
@@ -112,11 +112,19 @@ const bookSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    fiction_non_fiction: {
-        type: Number,
+    bestseller: {
+        type: Boolean,
         required: true
     },
+    fiction_non_fiction: {
+        type: Boolean,
+        required: true
+    },
+},
+    {
+        collection: 'Books'
+    }
 
-})
+);
 
 module.exports = mongoose.model('Books', bookSchema)
