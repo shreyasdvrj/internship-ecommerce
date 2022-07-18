@@ -3,6 +3,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 import Header from "./components/Header/header";
 import Landing from "./components/Landing/landing";
 import BestsellersCarousel from "./components/Bestseller/bestsellersCarousel";
@@ -23,21 +26,19 @@ import Payment from "./pages/Checkout/payment";
 import Register from "./test";
 import Sidebar from "./components/Sidebar/sidenav";
 import ProductList from "./components/Orders/product";
-import Protected from "./Protected";
 
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState(null);
-  const login = () => {
-    var token = Cookies.get("jwt");
-    if (token) setisLoggedIn(true);
-  };
-  const logOut = () => {
-    setisLoggedIn(false);
-  };
+  var token = Cookies.get("jwt");
+  var loggedIn = false;
+  if (token) loggedIn = true;
+
+  const notify = ()=>{
+    // inbuilt-notification
+    toast.error('Please login first')
+  }
 
   return (
     <div className="App">
-      
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
@@ -45,6 +46,7 @@ function App() {
               <Header />
               <Navigation />
             </div>
+            <ToastContainer />
             <Landing />
             <BestsellersCarousel></BestsellersCarousel>
             <Footer />
@@ -55,12 +57,7 @@ function App() {
           <Route path="/signup">
             <Signup />
           </Route>
-          {/* <Route path="/profile">
-            <Profile />
-          </Route> */}
-          {/* <Protected isLoggedIn={isLoggedIn}>
-            <Profile />
-          </Protected> */}
+
           <Route path="/product">
             <ProductDetail />
           </Route>
@@ -91,6 +88,20 @@ function App() {
           <Route path="/postReview">
             <PostReview />
           </Route>
+          {loggedIn ? (
+            <>
+              <Route path="/profile">
+                <Profile />
+              </Route>
+            </>
+          ) : (
+            <>
+              <Route path="/profile">
+                            
+                <Login />
+              </Route>
+            </>
+          )}
         </Switch>
       </BrowserRouter>
     </div>

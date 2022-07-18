@@ -19,7 +19,7 @@ const ProductDetail =() => {
 
         return (
             <div>
-                {/* {console.log("price",bookDetail.props.Price)} */}
+                {/* {console.log("rating",bookDetail.props.likedPercent)} */}
                 <Header></Header>
                 <Navbar></Navbar>
                 <div className="product-div">
@@ -31,7 +31,7 @@ const ProductDetail =() => {
                     </div>
 
                 </div>
-                <ReviewSection></ReviewSection>
+                <ReviewSection rating={bookDetail.props.likedPercent}></ReviewSection>
                 <FooterPage></FooterPage>
             </div>
 

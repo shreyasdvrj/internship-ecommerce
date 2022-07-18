@@ -29,6 +29,7 @@
     "react-icons": "^4.4.0",
     "react-payment": "^0.1.8",
     "react-payment-inputs": "^1.1.9",
+    "react-rating-stars-component": "^2.2.0",
     "react-scripts": "^5.0.1",
     "react-stacked-carousel": "^1.1.4",
     "react-stacked-center-carousel": "^1.0.11",

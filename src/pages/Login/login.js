@@ -41,8 +41,8 @@ const Login = () => {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },
       }).then((res) => {
-        console.log("login done - ", res);
-        history.push("/profile")
+        toast("Logged In")
+        history.push("/")
       //   if (res.data.isAuth) {
       //     toast("Logged In");
       //     axios({
