@@ -19,7 +19,7 @@ class ExploreNonFiction extends React.Component {
         this.state = {books: []};
     }
       componentDidMount() {
-        axios.get('http://localhost:5000/Books/Books')
+        axios.get('http://localhost:5000/books/nonfiction')
             .then(response => {
                 this.setState({ books: response.data });
             })

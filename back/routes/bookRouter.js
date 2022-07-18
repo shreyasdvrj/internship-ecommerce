@@ -3,5 +3,7 @@ const bookCtrl = require('../controller/BookCtrl')
 
 router.get('/best', bookCtrl.getBestBooks)
 router.get('/all', bookCtrl.getAllBooks)
+router.get('/fiction', bookCtrl.getFictionBooks)
+router.get('/nonfiction', bookCtrl.getNonFictionBooks)
 
 module.exports = router
