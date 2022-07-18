@@ -20,6 +20,24 @@ const bookCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+  getFictionBooks: async (req, res) => {
+    try {
+      const book = await Books.find({fiction: 'true'}).limit(6);
+      res.json(book);
+
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+  getNonFictionBooks: async (req, res) => {
+    try {
+      const book = await Books.find({fiction: 'false'}).limit(6);
+      res.json(book);
+
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
   
 };
 

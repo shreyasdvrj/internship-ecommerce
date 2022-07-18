@@ -116,7 +116,7 @@ const bookSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    fiction_non_fiction: {
+    fiction: {
         type: Boolean,
         required: true
     },
