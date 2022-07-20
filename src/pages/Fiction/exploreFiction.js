@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useMemo} from 'react'
 import "bootstrap/dist/css/bootstrap.css";
 import TopBar from "../../components/TopBar/topBar";
 import Header from "../../components/Header/header";
@@ -16,18 +16,22 @@ const str_fiction =
 function ExploreFiction() {
 
   const [books, setBooks] = useState( [] );
-  const [genres, setGenres] = useState( [] );
-  var query = '';
+  const [genres, setGenres] = useState( '' );
+  var [query, setQuery] = useState('')
+
   
   useEffect(() => {
     const axiosBooks = async () => {
-      const response = await axios(`http://localhost:5000/books/find?fiction=true${query}`);
+      // genres.map(genre => setQuery(query+`&${genre}=true`))
+      console.log("genre is ",genres)
+      const response = await axios(`http://localhost:5000/books/find?fiction=true${genres}`);
       setBooks(response.data);
-      genres.map(genre => query = '&' + query + genre + '=true')
+      // console.log(query)
+      // genres.map(genre => query = '&' + query + genre + '=true')
     };
     //query = query.slice(0, -1) 
     axiosBooks();
-  }, [query]);
+  }, [genres]);
   
     return (
       <div>
@@ -38,7 +42,7 @@ function ExploreFiction() {
           <div style={{ display: "flex" }}>
             <div className="filters">
               <GenreFilters getFilter = {setGenres}></GenreFilters>
-              <p>{genres[0]}</p>
+              <p></p>
               <p></p>
               <p></p>
               <PriceFilters></PriceFilters>

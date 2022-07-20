@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, StrictMode } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
@@ -32,7 +32,7 @@ function App() {
   var loggedIn = false;
   if (token) loggedIn = true;
 
-  const notify = ()=>{
+  const notify = () => {
     // inbuilt-notification
     toast.error('Please login first')
   }
@@ -74,9 +74,12 @@ function App() {
             <Payment />
           </Route>
           <Route path="/exploreFiction">
-            <ExploreFiction />
+    
+              <ExploreFiction />
+    
           </Route>
           <Route path="/exploreNonFiction">
+
             <ExploreNonFiction />
           </Route>
           <Route path="/best">
@@ -97,7 +100,7 @@ function App() {
           ) : (
             <>
               <Route path="/profile">
-                            
+
                 <Login />
               </Route>
             </>
