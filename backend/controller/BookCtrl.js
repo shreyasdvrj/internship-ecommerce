@@ -22,7 +22,7 @@ const bookCtrl = {
   },
   getAllBooks: async (req, res) => {
     try {
-      const book = await Books.find().limit(6);
+      const book = await Books.find().sort({Price:-1}).limit(6);
       res.json(book);
 
     } catch (err) {
