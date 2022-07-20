@@ -13,8 +13,6 @@ class FictionAndNonFictionFilters extends React.Component {
             <div><p className="filterHeading">Categories</p>
                 <MDBCheckbox name='fiction' value='' label='Fiction'  />
                 <MDBCheckbox name='non-fiction' value=''  label='Non-fiction' />
-                <br />
-                < PriceFilters />
             </div>
 
         );

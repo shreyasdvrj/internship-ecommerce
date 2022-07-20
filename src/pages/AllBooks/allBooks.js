@@ -11,7 +11,7 @@ import FictionAndNonFictionFilters from "../../components/Filters/fictionAndNonF
 import "../../components/Filters/filters.css";
 
 const str_newReleases =
-  "Be upto date with our newest releases. Updated every week.";
+  "Explore our widest range of fiction and non fiction books.";
 
 class NewReleases extends React.Component {
   constructor(props) {
@@ -33,11 +33,15 @@ class NewReleases extends React.Component {
       <div>
         <Header />
         <Navbar />
-        <TopBar name="Shop New Releases" value={str_newReleases}></TopBar>
+        <TopBar name="Shop All Books" value={str_newReleases}></TopBar>
         <div style={{ "margin-bottom": "5%" }}>
           <div style={{ display: "flex" }}>
             <div className="filters">
               <FictionAndNonFictionFilters></FictionAndNonFictionFilters>
+              <p></p>
+              <p></p>
+              <p></p>
+              <PriceFilters></PriceFilters>
             </div>
             <div style={{ display: "flex", "flex-wrap": "wrap" }}>
               {this.state.books &&

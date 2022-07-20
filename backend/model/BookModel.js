@@ -2,11 +2,7 @@ const mongoose = require('mongoose')
 
 
 const bookSchema = new mongoose.Schema({
-    id: {
-        type: Number,
-        required: true,
-        unique: true
-    },
+   
     title: {
         type: String,
         required: true
@@ -28,10 +24,6 @@ const bookSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    bookFormat: {
-        type: String,
-        required: true
-    },
     pages: {
         type: Number,
         required: true
@@ -48,10 +40,6 @@ const bookSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    ratingsByStars: {
-        type: String,
-        required: true
-    },
     likedPercent: {
         type: Number,
         required: true
@@ -60,7 +48,7 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Price: {
+    price: {
         type: Number,
         required: true
     },
@@ -100,7 +88,7 @@ const bookSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
     },
-    selfhelp: {
+    selfHelp: {
         type: Boolean,
         required: true
     },
@@ -122,7 +110,7 @@ const bookSchema = new mongoose.Schema({
     },
 },
     {
-        collection: 'Books'
+        collection: 'books'
     }
 
 );

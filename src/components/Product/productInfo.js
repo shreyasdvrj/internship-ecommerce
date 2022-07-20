@@ -23,7 +23,7 @@ class ProductInfo extends React.Component {
             <div className='pdiv'>
                 <h1 className="book-name">{this.props.name}</h1>
                 <h2 className="book-author">{this.props.author}</h2>
-                <p className="book-desc">&#8377;{price}</p>
+               <strong> <p className="book-desc">&#8377;{price}</p></strong>
                 <p className="book-desc">{this.props.desc}</p>
                 <h2 className="book-formats">Formats</h2>
                 <div style={{ 'display': 'flex' }}>

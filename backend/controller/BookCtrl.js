@@ -13,7 +13,7 @@ const bookCtrl = {
   },
   getBestBooks: async (req, res) => {
     try {
-      const book = await Books.find({bestseller: 'true'}).limit(6);
+      const book = await Books.find({bestseller: 'true'});
       res.json(book);
 
     } catch (err) {
@@ -42,6 +42,17 @@ const bookCtrl = {
     try {
       const book = await Books.find({fiction: 'false'}).limit(6);
       res.json(book);
+
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+  getBookByQuery: async (req, res) => {
+    var query = req.query;
+    try {
+      const book = await Books.find(query).limit(6);
+      res.json(book);
+      
 
     } catch (err) {
       return res.status(500).json({ msg: err.message });

@@ -27,7 +27,7 @@ const ProductDetail =() => {
                         <img className="product-image" src={bookDetail.props.coverImg} />
                     </div>
                     <div className="product-info-div">
-                        <ProductInfo name={bookDetail.props.title} author={bookDetail.props.author} price={bookDetail.props.Price} desc={bookDetail.props.description} />
+                        <ProductInfo name={bookDetail.props.title} author={bookDetail.props.author} price={bookDetail.props.price} desc={bookDetail.props.description} />
                     </div>
 
                 </div>

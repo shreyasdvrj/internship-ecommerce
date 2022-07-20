@@ -5,6 +5,7 @@ class GenreFilters extends React.Component {
     render() {
         return (
             <div><p className="filterHeading">Categories</p>
+            
                 <MDBCheckbox name='fantasy' value='' label='Fantasy' />
                 <MDBCheckbox name='romance' value=''  label='Romance' />
                 <MDBCheckbox name='historical' value=''  label='Historical' />
