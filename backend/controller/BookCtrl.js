@@ -2,6 +2,15 @@ const Books = require("../model/BookModel");
 
 
 const bookCtrl = {
+  getBookById: async (req, res) => {
+    try {
+      const book = await Books.findById(req.params.id)
+      res.json(book);
+
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
   getBestBooks: async (req, res) => {
     try {
       const book = await Books.find({bestseller: 'true'}).limit(6);

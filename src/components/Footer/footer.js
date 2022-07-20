@@ -23,18 +23,18 @@ const FooterPage = () => {
               </h6>
             </MDBCol>
             <MDBCol md="6" lg="7" className="text-center text-md-right">
-            
+            <a className="li-ic">
+                <i className="fab fa-linkedin-in white-text mr-lg-4"> </i>
+              </a>
               &nbsp;&nbsp;&nbsp;
-              <a className="tw-ic">
+              <a className="tw-ic" href="https://github.com/shreyasdvrj/internship-ecommerce">
                 <i className="fab fa-github white-text mr-lg-4"> </i>
               </a>&nbsp;&nbsp;&nbsp;
             
               <a className="li-ic">
                 <i className="fab fa-linkedin-in white-text mr-lg-4"> </i>
               </a>&nbsp;&nbsp;&nbsp;
-              <a className="ins-ic">
-                <i className="fab fa-instagram white-text mr-lg-4"> </i>
-              </a>
+              
             </MDBCol>
           </MDBRow>
         </MDBContainer>

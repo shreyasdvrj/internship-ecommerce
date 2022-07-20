@@ -1,6 +1,5 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
-import img from "./4stars.png";
 import "./singleReview.css";
 
 const reviewText =
@@ -10,7 +9,7 @@ class SingleReview extends React.Component {
     super(props);
   }
   render() {
-    const rate = this.props.rating/20;
+    const rate = this.props.rating;
     return (
       <div className="single-review">
         <ReactStars

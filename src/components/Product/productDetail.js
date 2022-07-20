@@ -31,7 +31,7 @@ const ProductDetail =() => {
                     </div>
 
                 </div>
-                <ReviewSection rating={bookDetail.props.likedPercent}></ReviewSection>
+                <ReviewSection rating={bookDetail.props.rating}></ReviewSection>
                 <FooterPage></FooterPage>
             </div>
 
