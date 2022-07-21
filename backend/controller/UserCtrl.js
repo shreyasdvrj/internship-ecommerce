@@ -35,23 +35,21 @@ const userCtrl = {
       // if login success create token
       const payload = { id: user._id, name: user.username };
       const token = jwt.sign(payload, process.env.TOKEN_SECRET, {
-        expiresIn: "1h",
+        expiresIn: "1d",
       });
-      console.log(token);
-      res.cookie('jwt', token)
+      res.cookie("jwt", token);
       // res.cookie('jwt', token,
       // {  httpOnly: true,
       //   origin: 'http://localhost:3000'})
-      console.log("Works")
-      res.json({ user: user._id, isAuth: true, msg: "Logged In"});
-
+      console.log("Works");
+      res.json({ user: user._id, isAuth: true, msg: "Logged In" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
   verifiedToken: async (req, res) => {
     try {
-      const token = req.cookies['jwt'];
+      const token = req.cookies["jwt"];
       if (!token) return res.send(false);
 
       jwt.verify(token, process.env.TOKEN_SECRET, async (err, verified) => {
@@ -67,16 +65,23 @@ const userCtrl = {
   },
   logout: (req, res) => {
     try {
-        res.cookie('jwt','',{maxAge : 1});
-        res.send("Logged out")
-        }
-       catch (err) {
-        return res.status(500).json({ msg: err.message });
-      }
+      res.cookie("jwt", "", { maxAge: 1 });
+      res.send("Logged out");
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
   },
   profile: (req, res) => {
     try {
-      res.send("Profile Page")
+      const token = req.cookies["jwt"];
+      if (!token) return res.send("no token");
+
+      jwt.verify(token, process.env.TOKEN_SECRET, async (err, verified) => {
+        if (err) return res.send(err);
+        const user = await Users.findById(verified.id);
+        if (!user) return res.send("no user");
+        return res.send(user._id);
+      });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

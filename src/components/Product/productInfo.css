@@ -12,6 +12,11 @@ height: 35%;
     font-size: small;
 
 }
+.book-rating{
+    font-size: small;
+    margin-top: 10px;
+    margin-left: 5px;
+}
 .book-desc{
     font-size: small;
 }

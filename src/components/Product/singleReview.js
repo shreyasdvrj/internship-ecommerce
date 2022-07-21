@@ -1,5 +1,4 @@
 import React from "react";
-import ReactStars from "react-rating-stars-component";
 import "./singleReview.css";
 
 const reviewText =
@@ -9,20 +8,15 @@ class SingleReview extends React.Component {
     super(props);
   }
   render() {
-    const rate = this.props.rating;
+    const review = this.props.review;
+    // console.log(review[0])
     return (
       <div className="single-review">
-        <ReactStars
-          count={5}
-          value={rate}
-          size={24}
-          edit= {false}
-          activeColor="#ffd700"
-        />
-        <p className="review-date">29-06-2022</p>
-        <h1 className="review-heading">Fantastic Read</h1>
-        <p className="user-name">User 01</p>
-        <h2 className="review-text">{reviewText}</h2>
+       {/* <p className="review-date">29-06-2022</p> */}
+        <h1 className="review-heading">{review[0]}</h1>
+        <p className="user-name">By {review[2]}</p>
+        <h2 className="review-text">{review[1]}</h2>
+        <hr/>
       </div>
     );
   }

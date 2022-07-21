@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import React, { useState, StrictMode } from "react";
+import React, { useEffect, StrictMode } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 import Header from "./components/Header/header";
 import Landing from "./components/Landing/landing";
@@ -17,13 +17,13 @@ import ExploreFiction from "./pages/Fiction/exploreFiction";
 import ExploreNonFiction from "./pages/NonFiction/exploreNonFiction";
 import ProductDetail from "./components/Product/productDetail";
 import PostReview from "./components/Product/postReview";
+import Cart from "./pages/Cart/cart";
 import Bestsellers from "./pages/Bestsellers/bestsellers";
 import AllBooks from "./pages/AllBooks/allBooks";
 import Profile from "./pages/Profile/profile";
 import Summary from "./pages/Checkout/summary";
 import Address from "./pages/Checkout/address";
 import Payment from "./pages/Checkout/payment";
-import Register from "./test";
 import Sidebar from "./components/Sidebar/sidenav";
 import ProductList from "./components/Orders/product";
 
@@ -34,8 +34,8 @@ function App() {
 
   const notify = () => {
     // inbuilt-notification
-    toast.error('Please login first')
-  }
+    toast.error("Please login first");
+  };
 
   return (
     <div className="App">
@@ -57,12 +57,11 @@ function App() {
           <Route path="/signup">
             <Signup />
           </Route>
-
           <Route path="/product">
             <ProductDetail />
           </Route>
           <Route path="/cart">
-            <ProductDetail />
+            <Cart />
           </Route>
           <Route path="/checkout/summary">
             <Summary />
@@ -74,12 +73,9 @@ function App() {
             <Payment />
           </Route>
           <Route path="/exploreFiction">
-    
-              <ExploreFiction />
-    
+            <ExploreFiction />
           </Route>
           <Route path="/exploreNonFiction">
-
             <ExploreNonFiction />
           </Route>
           <Route path="/best">
@@ -100,7 +96,6 @@ function App() {
           ) : (
             <>
               <Route path="/profile">
-
                 <Login />
               </Route>
             </>

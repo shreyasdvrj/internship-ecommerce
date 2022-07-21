@@ -1,7 +1,7 @@
 import React from "react";
 import OrderCard from "./orderCard";
 import "./orderHistory.css"
-import img from '../Product/bookimgAsProduct.jpg'
+import img from "../../assets/logo.png";
 class OrderHistory extends React.Component {
     render() { 
         return (

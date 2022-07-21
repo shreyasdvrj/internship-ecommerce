@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const userRouter = require('./routes/userRouter')
 const bookRouter = require('./routes/bookRouter')
+const cartRouter = require('./routes/cartRouter')
 
 const path = require('path')
 var cookies = require("cookie-parser");
@@ -30,6 +31,7 @@ app.get("/", function (req, res) {
   
 app.use('/users', userRouter)
 app.use('/books', bookRouter)
+app.use('/cart', cartRouter)
 
 //MongoDb connection
 mongoose.connect('mongodb://127.0.0.1:27017/StoryHouse', { useNewUrlParser : true})
