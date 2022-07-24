@@ -8,7 +8,7 @@ import {
   MDBRow,
   MDBCol,
 } from "mdb-react-ui-kit";
-import img from "../Product/bookimgAsProduct.jpg";
+import img from "../../assets/logo.png";
 
 export default function OrderCard() {
   return (
