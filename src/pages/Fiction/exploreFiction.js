@@ -16,15 +16,16 @@ const str_fiction =
 function ExploreFiction() {
 
   const [books, setBooks] = useState( [] );
-  const [genres, setGenres] = useState( '' );
+  const [genres, setGenres] = useState('');
   var [query, setQuery] = useState('')
 
   
   useEffect(() => {
     const axiosBooks = async () => {
       // genres.map(genre => setQuery(query+`&${genre}=true`))
-      console.log("genre is ",genres)
-      const response = await axios(`http://localhost:5000/books/find?fiction=true${genres}`);
+      //console.log("genre is ",genres)
+      
+      const response = await axios(`${genres}`);
       setBooks(response.data);
       // console.log(query)
       // genres.map(genre => query = '&' + query + genre + '=true')

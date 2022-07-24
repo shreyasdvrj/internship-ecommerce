@@ -58,24 +58,28 @@ const bookCtrl = {
   },
   getBookByQuery: async (req, res) => {
     var query = req.query;
+
     var science = query.science;
     var adventure_fantasy = query.adventure_fantasy;
-    var literature = query.literature;
-    if(Array.isArray(science))
-       science = science[science.length-1]
-    if(Array.isArray(adventure_fantasy))
-       adventure_fantasy = adventure_fantasy[adventure_fantasy.length-1]
-    if(Array.isArray(literature))
-       literature = literature[literature.length-1]
-    
-    
+    var literature = query.literature; 
+    var children = query.children;
+    var spirituality_religion = query.spirituality_religion;
+    var education = query.education;
+    var romance = query.romance;
+    var history = query.history;
+    var comedy = query.comedy;
+    var knowledge = query.knowledge;
+    var selfHelp = query.selfHelp;
+    var biographies = query.biographies; 
+
     try {
-      const book = await Books.find( {$or: [{adventure_fantasy:adventure_fantasy},
-        {literature:literature}, {children:query.children}, 
-        {spirituality_religion:query.spirituality_religion}, {education:query.education},
-        {science:science}, {romance:query.romance}, {history:query.history},
-        {comedy:query.comedy}, {knowledge:query.knowledge}, {selfHelp:query.selfHelp},
-        {biographies:query.biographies}]} ).limit(6);
+        const book = await Books.find({$or: [{adventure_fantasy:adventure_fantasy},
+          {literature:literature}, {children:children}, 
+          {spirituality_religion:spirituality_religion}, {education:education},
+          {science:science}, {romance:romance}, {history:history},
+          {comedy:comedy}, {knowledge:knowledge}, {selfHelp:selfHelp},
+          {biographies:biographies}]}).limit(6);
+     
       res.json(book);
       
 
