@@ -55,24 +55,15 @@ const bookCtrl = {
   getBookByQuery: async (req, res) => {
     var query = req.query;
 
-    var science = query.science;
-    var adventure_fantasy = query.adventure_fantasy;
-    var literature = query.literature;
-    if (Array.isArray(science)) science = science[science.length - 1];
-    if (Array.isArray(adventure_fantasy))
-      adventure_fantasy = adventure_fantasy[adventure_fantasy.length - 1];
-    if (Array.isArray(literature))
-      literature = literature[literature.length - 1];
-
     try {
       const book = await Books.find({
         $or: [
-          { adventure_fantasy: adventure_fantasy },
-          { literature: literature },
+          { adventure_fantasy: query.adventure_fantasy },
+          { literature: query.literature },
           { children: query.children },
           { spirituality_religion: query.spirituality_religion },
           { education: query.education },
-          { science: science },
+          { science: query.science },
           { romance: query.romance },
           { history: query.history },
           { comedy: query.comedy },
