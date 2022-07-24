@@ -12,7 +12,7 @@ import "../../components/Filters/filters.css"
 
 const str_fiction =
   "Explore from our collection of classic masterpieces, contemporary and scientific themes, and unforgettable stories.";
-
+ 
 function ExploreFiction() {
 
   const [books, setBooks] = useState( [] );

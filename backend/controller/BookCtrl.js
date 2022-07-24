@@ -54,27 +54,31 @@ const bookCtrl = {
   },
   getBookByQuery: async (req, res) => {
     var query = req.query;
-
+    var book;
+    console.log(query);
     try {
-      const book = await Books.find({
-        $and: [
-          {fiction: true},
-          {
-        $or: [
-          { adventure_fantasy: query.adventure_fantasy },
-          { literature: query.literature },
-          { children: query.children },
-          { spirituality_religion: query.spirituality_religion },
-          { education: query.education },
-          { science: query.science },
-          { romance: query.romance },
-          { history: query.history },
-          { comedy: query.comedy },
-          { knowledge: query.knowledge },
-          { selfHelp: query.selfHelp },
-          { biographies: query.biographies },
-        ],}]
-      }).limit(20);
+      
+         book = await Books.find({
+          $and: [
+            {fiction: query.fiction},
+            {
+          $or: [
+            { adventure_fantasy: query.adventure_fantasy },
+            { literature: query.literature },
+            { children: query.children },
+            { spirituality_religion: query.spirituality_religion },
+            { education: query.education },
+            { science: query.science },
+            { romance: query.romance },
+            { history: query.history },
+            { comedy: query.comedy },
+            { knowledge: query.knowledge },
+            { selfHelp: query.selfHelp },
+            { biographies: query.biographies },
+          ],}]
+        }).limit(20);
+       
+      
       res.json(book);
     } catch (err) {
       return res.status(500).json({ msg: err.message });
