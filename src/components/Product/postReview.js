@@ -13,28 +13,18 @@ import {
 } from "cdbreact";
 import Waves from "../../components/Wave/wave";
 import "../../pages/Login/login.css";
-import { useLocation,useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 const PostReview = () => {
-  // const [user, setUser] = useState(null);
-  // useEffect(() => {
-
-  //   axios({
-  //     method : "GET",
-  //     url : "http://localhost:5000/users/verify",
-  //     withCredentials: true}).then((response) => {
-  //     setUser(response.data);
-  //   });
-  // }, []);
   const location = useLocation();
   let history = useHistory();
-  const { bookDetail } = location.state;
+  const { bookDetail, username } = location.state;
   const id = bookDetail._id;
   const [review, setReview] = useState({
     title: "",
     description: "",
     bookid: id,
-    user: "test",
+    user: username,
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,14 +45,13 @@ const PostReview = () => {
         headers: { "Content-Type": "application/json" },
       })
         .then((res) => {
-          console.log(res.data.message);
-          history.goBack()
+          console.log(res.data);
+          history.goBack();
         })
         .catch((res, error) => {
           console.log("Problem submitting New Review", error);
           console.log(res);
           setReview(() => "");
-          // toast("Problem registering, email already taken");
           window.location.reload();
         });
     } else {

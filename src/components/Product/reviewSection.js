@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 class ReviewSection extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { reviews: {} };
+    this.state = { reviews: {}, user : '' };
   }
   componentDidMount() {
     const bookid = this.props.book._id;
@@ -24,10 +24,23 @@ class ReviewSection extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+      axios({
+        method: "GET",
+        url: "http://localhost:5000/users/profile",
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((response) => {
+          this.setState({ user: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
   }
 
   render() {
     const bookid = this.state.reviews.bookid;
+    const username = this.state.user.username;
     return (
       <div className="review-section">
          <hr></hr>
@@ -37,7 +50,7 @@ class ReviewSection extends React.Component {
           <>
             {this.state.reviews.description &&
               this.state.reviews.description.map((review) => (
-                <SingleReview review={review}></SingleReview>
+                <SingleReview review={review} ></SingleReview>
               ))}
           </>
         ) : (
@@ -49,7 +62,7 @@ class ReviewSection extends React.Component {
           <Link
             to={{
               pathname: "/postReview/" + this.props.book._id,
-              state: { bookDetail: this.props.book },
+              state: { bookDetail: this.props.book, username: username},
             }}
           >
             Review this book

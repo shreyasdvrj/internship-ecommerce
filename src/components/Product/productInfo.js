@@ -12,7 +12,7 @@ class ProductInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userid : '',
+      user : '',
      bookid: this.props.book._id,
     };
   }
@@ -25,7 +25,7 @@ class ProductInfo extends React.Component {
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
-        this.setState({ userid: response.data });
+        this.setState({ user: response.data });
       })
       .catch(function (error) {
         console.log(error);
@@ -35,7 +35,7 @@ class ProductInfo extends React.Component {
   addToCart = () => {
       const review ={
       "bookid" : this.state.bookid,
-      "userid" : this.state.userid
+      "userid" : this.state.user.userid
     }
     axios({
       method: "POST",

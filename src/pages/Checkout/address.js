@@ -5,7 +5,7 @@ import Header from "../../components/Header/header";
 import Navigation from "../../components/Navbar/navbar";
 import FooterPage from "../../components/Footer/footer";
 import { MDBProgress, MDBProgressBar } from "mdb-react-ui-kit";
-import OrderHistory from "../../components/Orders/orderHistory";
+import CartItems from "../../components/Cart/CartItems";
 import ShippingInfo from "../../components/shippingInfo";
 import { CDBInput, CDBBtn } from "cdbreact";
 
@@ -32,7 +32,7 @@ class Address extends React.Component {
             <h4 style={{ fontWeight: "bold", marginBottom: "10%" }}>
               Your Cart
             </h4>
-            <OrderHistory />
+            <CartItems />
             <CDBInput type="text" placeholder="Enter Coupon" />
             <hr />
 

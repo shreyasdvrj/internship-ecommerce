@@ -5,6 +5,7 @@ import Header from "../../components/Header/header";
 import Navigation from "../../components/Navbar/navbar";
 import FooterPage from "../../components/Footer/footer";
 import { MDBProgress, MDBProgressBar } from "mdb-react-ui-kit";
+import Cart from "../../components/Cart/CartItems"
 import OrderHistory from "../../components/Orders/orderHistory";
 import { CDBInput, CDBBtn } from "cdbreact";
 
@@ -28,7 +29,7 @@ class Summary extends React.Component {
                 Continue Shopping
               </a>
             </p>
-            <OrderHistory />
+            <Cart />
           </div>
           <div className="bottomPane">
             <h4 style={{ fontWeight: "bold", marginBottom: "10%" }}>

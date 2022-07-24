@@ -80,7 +80,7 @@ const userCtrl = {
         if (err) return res.send(err);
         const user = await Users.findById(verified.id);
         if (!user) return res.send("no user");
-        return res.send(user._id);
+        return res.send({"userid" : user._id, "username" : user.username});
       });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
