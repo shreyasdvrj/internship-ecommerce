@@ -57,6 +57,9 @@ const bookCtrl = {
 
     try {
       const book = await Books.find({
+        $and: [
+          {fiction: true},
+          {
         $or: [
           { adventure_fantasy: query.adventure_fantasy },
           { literature: query.literature },
@@ -70,8 +73,8 @@ const bookCtrl = {
           { knowledge: query.knowledge },
           { selfHelp: query.selfHelp },
           { biographies: query.biographies },
-        ],
-      }).limit(6);
+        ],}]
+      }).limit(20);
       res.json(book);
     } catch (err) {
       return res.status(500).json({ msg: err.message });

@@ -25,7 +25,7 @@ function ExploreFiction() {
       // genres.map(genre => setQuery(query+`&${genre}=true`))
       //console.log("genre is ",genres)
       
-      const response = await axios(`${genres}`);
+      const response = await axios(`http://localhost:5000/books/find?fiction=true${genres}`);
       setBooks(response.data);
       // console.log(query)
       // genres.map(genre => query = '&' + query + genre + '=true')

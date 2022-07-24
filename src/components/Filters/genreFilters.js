@@ -8,18 +8,20 @@ function GenreFilters({getFilter}) {
       genres: [],
       response: [],
     });
-    const [query, setQuery] =useState('')
+    const [query, setQuery] = useState('')
     var hashmap = new Map();
     const handleChange = (e) => {
       // Destructuring
+      setQuery('')
       const { value, checked } = e.target;
       const { genres } = userinfo;
       
       hashmap[value] = checked;
       //query = `http://localhost:5000/books/find?fiction=true`
       Object.keys(hashmap).map(k => {if(hashmap[k] == true)
-        setQuery(`http://localhost:5000/books/find?fiction=true`+ `&${k}=${hashmap[k]}`)})
-  
+        setQuery(query + `&${k}=${hashmap[k]}`)})
+      
+         
       // setQuery(query+ `&${value}=${checked}`)
       // Case 1 : The user checks the box
       if (checked) {
@@ -38,6 +40,8 @@ function GenreFilters({getFilter}) {
       }
      
     };
+
+    
   
 
         return (
