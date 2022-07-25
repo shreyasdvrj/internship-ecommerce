@@ -54,9 +54,11 @@ const bookCtrl = {
   },
   getBookByQuery: async (req, res) => {
     var query = req.query;
+    console.log(query)
     var book;
     var g = query.startPrice;
     var l = query.endPrice;
+    console.log(g,l)
     console.log(JSON.stringify(query));
     try {
          if(JSON.stringify(query) == "{\"fiction\":\"true\"}")
