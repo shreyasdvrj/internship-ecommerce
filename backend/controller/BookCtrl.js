@@ -29,9 +29,14 @@ const bookCtrl = {
   },
   getAllBooks: async (req, res) => {
     try {
-      const book = await Books.find().sort({ Price: -1 }).limit(6);
-      console.log(typeof book[0]._id);
-      res.json(book);
+      const { page,limit} = req.query;
+      const book = await Books.find().limit(limit * 1).skip((page - 1) * limit).exec();
+      const count = await Books.countDocuments();
+      res.json({
+        book,
+        totalPages: Math.ceil(count / limit),
+        currentPage: page
+      });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
