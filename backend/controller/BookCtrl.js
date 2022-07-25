@@ -55,28 +55,42 @@ const bookCtrl = {
   getBookByQuery: async (req, res) => {
     var query = req.query;
     var book;
-    console.log(query);
+    var g = query.startPrice;
+    var l = query.endPrice;
+    console.log(JSON.stringify(query));
     try {
-      
-         book = await Books.find({
-          $and: [
-            {fiction: query.fiction},
-            {
-          $or: [
-            { adventure_fantasy: query.adventure_fantasy },
-            { literature: query.literature },
-            { children: query.children },
-            { spirituality_religion: query.spirituality_religion },
-            { education: query.education },
-            { science: query.science },
-            { romance: query.romance },
-            { history: query.history },
-            { comedy: query.comedy },
-            { knowledge: query.knowledge },
-            { selfHelp: query.selfHelp },
-            { biographies: query.biographies },
-          ],}]
-        }).limit(20);
+         if(JSON.stringify(query) == "{\"fiction\":\"true\"}")
+          {
+            book = await Books.find({ fiction: "true" }).limit(20);
+          }
+          else if(JSON.stringify(query) == "{\"fiction\":\"false\"}")
+          {
+            book = await Books.find({ fiction: "false" }).limit(20);
+          }
+          else
+          {
+            book = await Books.find({
+              $and: [
+                {fiction: query.fiction},
+                {price: {$gt:g, $lt:l}},
+                {
+              $or: [
+                { adventure_fantasy: query.adventure_fantasy },
+                { literature: query.literature },
+                { children: query.children },
+                { spirituality_religion: query.spirituality_religion },
+                { education: query.education },
+                { science: query.science },
+                { romance: query.romance },
+                { history: query.history },
+                { comedy: query.comedy },
+                { knowledge: query.knowledge },
+                { selfHelp: query.selfHelp },
+                { biographies: query.biographies },
+              ],}]
+            }).limit(20);
+          }
+        
        
       
       res.json(book);

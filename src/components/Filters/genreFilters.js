@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MDBCheckbox } from 'mdb-react-ui-kit';
+import { MDBCheckbox, MDBInput } from 'mdb-react-ui-kit';
 
 function GenreFilters({getFilter}) {
 
@@ -9,6 +9,7 @@ function GenreFilters({getFilter}) {
       response: [],
     });
     const [query, setQuery] = useState('')
+    const [startPrice, setStartPrice] = useState('')
     var hashmap = new Map();
     const handleChange = (e) => {
       // Destructuring
@@ -18,7 +19,7 @@ function GenreFilters({getFilter}) {
       
       hashmap[value] = checked;
       //query = `http://localhost:5000/books/find?fiction=true`
-      Object.keys(hashmap).map(k => {if(hashmap[k] == true)
+      Object.keys(hashmap).map(k => {if(hashmap[k] == true )
         setQuery(query + `&${k}=${hashmap[k]}`)})
       
          
@@ -40,6 +41,12 @@ function GenreFilters({getFilter}) {
       }
      
     };
+    const handleChangeNumber = (e) => {
+console.log(e)
+      setStartPrice(e.target.value)
+      console.log(startPrice)
+      
+    };
 
     
   
@@ -59,7 +66,8 @@ function GenreFilters({getFilter}) {
                 <MDBCheckbox name='genres' value='science'  label='Science' onChange={handleChange}/>
                 <MDBCheckbox name='genres' value='selfHelp'  label='Self Help' onChange={handleChange}/>
                 <MDBCheckbox name='genres' value='spirituality_religion'  label='Spirituality and Religion' onChange={handleChange}/>
-                
+                <input type = 'number' name='startPrice' value = {userinfo.startPrice} label='Starting Price' id='typeNumber' onChange={handleChangeNumber}/>
+                <input type = 'number' name='endPrice' value = {userinfo.endPrice} label='Ending Price' id='typeNumber' onChange={handleChangeNumber}/>
                 
                 <button onClick={() => getFilter(query)}>Apply Filters</button>
                 

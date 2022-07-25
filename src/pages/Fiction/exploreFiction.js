@@ -17,6 +17,7 @@ function ExploreFiction() {
 
   const [books, setBooks] = useState( [] );
   const [genres, setGenres] = useState('');
+  const [prices, setPrices] = useState('');
   var [query, setQuery] = useState('')
 
   
@@ -25,7 +26,7 @@ function ExploreFiction() {
       // genres.map(genre => setQuery(query+`&${genre}=true`))
       //console.log("genre is ",genres)
       
-      const response = await axios(`http://localhost:5000/books/find?fiction=true${genres}`);
+      const response = await axios(`http://localhost:5000/books/find?fiction=true${genres}&${prices}`);
       setBooks(response.data);
       // console.log(query)
       // genres.map(genre => query = '&' + query + genre + '=true')
@@ -46,7 +47,7 @@ function ExploreFiction() {
               <p></p>
               <p></p>
               <p></p>
-              <PriceFilters></PriceFilters>
+              {/* <PriceFilters getFilter = {setPrices}></PriceFilters> */}
             </div>
             <div style={{ display: "flex", "flex-wrap": "wrap" }}>
             {books && books.map((book) => (
