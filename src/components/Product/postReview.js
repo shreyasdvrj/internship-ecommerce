@@ -18,7 +18,9 @@ import { useLocation, useHistory } from "react-router-dom";
 const PostReview = () => {
   const location = useLocation();
   let history = useHistory();
-  const { bookDetail, username } = location.state;
+  var { bookDetail, username } = location.state;
+  if(!username)
+    username = 'Anonymous'
   const id = bookDetail._id;
   const [review, setReview] = useState({
     title: "",

@@ -60,7 +60,9 @@ class ProductInfo extends React.Component {
     const price = String(this.props.book.price);
     var numRating = this.props.book.numRatings;
     numRating = numRating.toLocaleString("en-IN");
-
+    var loggedIn = true;
+    if (!this.state.user)
+      loggedIn = false;
     return (
       <div className="pdiv">
         <ToastContainer />
@@ -87,11 +89,11 @@ class ProductInfo extends React.Component {
             afterClick={printButtonLabel}
           />
         </div>
-        {console.log(this.state.user)}
+        {console.log(loggedIn)}
         <button
           className="p-addToCart"
           onClick={() => {
-            this.state.user ? alert("You need to login first") : this.addToCart();
+            loggedIn ? this.addToCart() : alert("You need to login first");
           }}
         >
           Add to Cart
