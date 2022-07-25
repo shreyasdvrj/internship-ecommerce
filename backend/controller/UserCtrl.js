@@ -74,12 +74,12 @@ const userCtrl = {
   profile: (req, res) => {
     try {
       const token = req.cookies["jwt"];
-      if (!token) return res.send("no token");
+      if (!token) return res.send(false);
 
       jwt.verify(token, process.env.TOKEN_SECRET, async (err, verified) => {
         if (err) return res.send(err);
         const user = await Users.findById(verified.id);
-        if (!user) return res.send("no user");
+        if (!user) return res.send(false);
         return res.send({"userid" : user._id, "username" : user.username});
       });
     } catch (err) {

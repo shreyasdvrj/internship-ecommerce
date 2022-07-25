@@ -55,9 +55,7 @@ class Cart extends Component {
          <Header />
         <Navigation />
         <TopBar name="Cart" value="Items in your cart"></TopBar>
-        Hello 
-        <div>Cart Items</div>
-       <CartItems />
+              <CartItems />
           <Link to='/checkout/summary'>
           <button>Checkout</button></Link>
           <FooterPage/>

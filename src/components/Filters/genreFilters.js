@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MDBCheckbox, MDBInput } from "mdb-react-ui-kit";
 import { Query } from "mongoose";
 
@@ -50,14 +50,14 @@ function GenreFilters({ getFilter }) {
     });
   };
   const { startPrice, endPrice } = price;
-  const clicked = () => {
-    setQuery(
-      query + `&startPrice=${startPrice}&endPrice=${endPrice}`
-    );
+  const sendQuery = () => {
     getFilter(query);
   };
-  // setQuery(query + `&startPrice=${price.startPrice}&endPrice=${price.endPrice}`)
-  console.log(query);
+
+  const clickQuery = async () => {
+    setQuery(query + `&startPrice=${startPrice}&endPrice=${endPrice}`);
+  };
+
   return (
     <div>
       <p className="filterHeading">Categories</p>
@@ -141,6 +141,7 @@ function GenreFilters({ getFilter }) {
         label="Starting Price"
         id="typeNumber"
         onChange={handleChangeNumber}
+        style={{marginTop: "25px"}}
       />
       <input
         type="number"
@@ -150,8 +151,8 @@ function GenreFilters({ getFilter }) {
         id="typeNumber"
         onChange={handleChangeNumber}
       />
-
-      <button onClick={clicked}>Apply Filters</button>
+      <button style={{marginTop: '10px'}} onClick={clickQuery}>Set Price Filter</button>
+      <button style={{marginTop: '30px'}} onClick={sendQuery}>Apply Filters</button>
     </div>
   );
 }

@@ -58,7 +58,11 @@ const bookCtrl = {
     var book;
     var g = query.startPrice;
     var l = query.endPrice;
-    console.log(g,l)
+    if (!g || !l)
+    {
+      g = 0
+      l= 75000
+    }
     console.log(JSON.stringify(query));
     try {
          if(JSON.stringify(query) == "{\"fiction\":\"true\"}")
@@ -95,7 +99,7 @@ const bookCtrl = {
         
        
       
-      res.json(book);
+      res.json(book.sort());
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

@@ -12,12 +12,12 @@ class ProductInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user : '',
-     bookid: this.props.book._id,
+      user: "",
+      bookid: this.props.book._id,
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     axios({
       method: "GET",
       url: "http://localhost:5000/users/profile",
@@ -33,10 +33,10 @@ class ProductInfo extends React.Component {
   }
 
   addToCart = () => {
-      const review ={
-      "bookid" : this.state.bookid,
-      "userid" : this.state.user.userid
-    }
+    const review = {
+      bookid: this.state.bookid,
+      userid: this.state.user.userid,
+    };
     axios({
       method: "POST",
       url: "http://localhost:5000/cart/add",
@@ -45,19 +45,22 @@ class ProductInfo extends React.Component {
     })
       .then((res) => {
         console.log(res.data);
-        toast("Added to Cart!")
+        toast("Added to Cart!");
       })
       .catch((res, error) => {
         console.log("Problem adding to cart", error);
         console.log(res);
       });
-  }
+  };
   hi = () => {
-    console.log("Hi")
-  }
+    console.log("Hi");
+  };
 
   render() {
-       const price = String(this.props.book.price);
+    const price = String(this.props.book.price);
+    var numRating = this.props.book.numRatings;
+    numRating = numRating.toLocaleString("en-IN");
+
     return (
       <div className="pdiv">
         <ToastContainer />
@@ -66,15 +69,15 @@ class ProductInfo extends React.Component {
         <strong>
           <p className="book-desc">&#8377;{price}</p>
         </strong>
-        <div style={{display: "flex"}}>
-        <ReactStars
-          count={5}
-          value={this.props.book.rating}
-          size={24}
-          edit= {false}
-          activeColor="#ffd700"
-        />
-        <p className="book-rating">{this.props.book.numRatings} Voters</p>
+        <div style={{ display: "flex" }}>
+          <ReactStars
+            count={5}
+            value={this.props.book.rating}
+            size={24}
+            edit={false}
+            activeColor="#ffd700"
+          />
+          <p className="book-rating">{numRating} Voters</p>
         </div>
         <p className="book-desc">{this.props.book.description}</p>
         <h2 className="book-formats">Formats</h2>
@@ -84,7 +87,15 @@ class ProductInfo extends React.Component {
             afterClick={printButtonLabel}
           />
         </div>
-        <button className="p-addToCart" onClick={this.addToCart}>Add to Cart</button>
+        {console.log(this.state.user)}
+        <button
+          className="p-addToCart"
+          onClick={() => {
+            this.state.user ? alert("You need to login first") : this.addToCart();
+          }}
+        >
+          Add to Cart
+        </button>
       </div>
     );
   }
