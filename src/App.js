@@ -24,6 +24,7 @@ import Profile from "./pages/Profile/profile";
 import Summary from "./pages/Checkout/summary";
 import Address from "./pages/Checkout/address";
 import Payment from "./pages/Checkout/payment";
+import Test from "./test";
 import Sidebar from "./components/Sidebar/sidenav";
 import ProductList from "./components/Orders/product";
 import SearchResult from "./pages/SearchResult/searchResult";
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <Signup />
+          </Route>
+          <Route path="/test">
+            <Test />
           </Route>
           <Route path="/product">
             <ProductDetail />

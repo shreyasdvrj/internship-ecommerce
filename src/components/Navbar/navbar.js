@@ -54,7 +54,7 @@ const history = useHistory();
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
+            <Nav className="me-auto">
               <Nav.Link href="/all">All Books</Nav.Link>
               <Nav.Link href="/best">Best Sellers</Nav.Link>
               <NavDropdown title="Genre" id="basic-nav-dropdown">
@@ -66,10 +66,11 @@ const history = useHistory();
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form className="d-flex navbar-form navbar-left mx-3">
+         
+            
+            
+            <Nav className="justify-content-end">
             <Nav.Link href="/search">Search</Nav.Link>
-             </Form>
-            <Nav className="mx-3">
               <Nav.Link href="/cart">Cart</Nav.Link>
               {token ? (
                 <>
