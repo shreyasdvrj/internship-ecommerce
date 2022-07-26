@@ -26,6 +26,7 @@ import Address from "./pages/Checkout/address";
 import Payment from "./pages/Checkout/payment";
 import Sidebar from "./components/Sidebar/sidenav";
 import ProductList from "./components/Orders/product";
+import SearchResult from "./pages/SearchResult/searchResult";
 
 function App() {
   var token = Cookies.get("jwt");
@@ -78,11 +79,14 @@ function App() {
           <Route path="/exploreNonFiction">
             <ExploreNonFiction />
           </Route>
+          <Route path="/all">
+            <AllBooks />
+          </Route>
           <Route path="/best">
             <Bestsellers />
           </Route>
-          <Route path="/all">
-            <AllBooks />
+          <Route path="/search">
+            <SearchResult />
           </Route>
           <Route path="/postReview">
             <PostReview />

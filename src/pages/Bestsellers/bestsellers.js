@@ -1,71 +1,72 @@
-import React from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import TopBar from "../../components/TopBar/topBar";
 import Header from "../../components/Header/header";
 import Navbar from "../../components/Navbar/navbar";
 import FooterPage from "../../components/Footer/footer";
-import ProductCard from "../../components/Product/productCard"
-import axios from 'axios';
+import ProductCard from "../../components/Product/productCard";
+import axios from "axios";
+import "../../components/Filters/filters.css";
+import Pagination from "react-js-pagination";
 import FictionAndNonFictionFilters from "../../components/Filters/fictionAndNonFictionFilters";
-import PriceFilters from "../../components/Filters/priceFilters";
-import "../../components/Filters/filters.css"
+import "../AllBooks/allBooks.css"
 
 const str_bestsellers =
   "These bestselling books should be on everyone's reading list";
+function Bestsellers() {
+  const [books, setBooks] = useState([]);
+  const [genres, setGenres] = useState("");
+  const [activePage, setActivePage] = useState(1);
+ 
 
-class Bestsellers extends React.Component {
+  const handlePageChange = (activePage) => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    console.log(`active page is ${activePage}`);
+    axios
+      .get(`http://localhost:5000/books/find?page=${activePage}&limit=20&${genres}&bestseller=true`)
+      .then(response => {
+        setBooks(response.data.book);
+      });
+    setActivePage(activePage);
+  };
 
-    constructor(props) {
-        super(props);
-        this.state = {books: []};
-    }
-
+  useEffect(() => {
+    const axiosBooks = async () => {
+      const response = await axios(
+        `http://localhost:5000/books/find?page=1&limit=20${genres}&bestseller=true`
+      );
+      setBooks(response.data.book);
+    };
     
-    componentDidMount() {
-        axios.get('http://localhost:5000/books/best')
-            .then(response => {
-                this.setState({ books: response.data });
-            })
-            .catch(function (error){
-                console.log(error);
-            })
-    }
+    axiosBooks();
+  }, [genres]);
 
-    
-    render() {
-        
-        return (
-            <div>
-                <Header />
-                <Navbar />
-                <TopBar name="Shop Bestsellers" value={str_bestsellers}></TopBar>
-                <div style = {{'margin-bottom': '5%'}}>
-                    <div style = {{'display': 'flex'}}>
-                        <div className="filters">
-                        <FictionAndNonFictionFilters></FictionAndNonFictionFilters>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <PriceFilters></PriceFilters>
-                        </div>
-                     
-                     
-                     <div style = {{'display': 'flex', 'flex-wrap': 'wrap'}}>
-
-                     {this.state.books && this.state.books.map((book) => (
-
-                        <ProductCard props = {book} ></ProductCard>
-                    ))} 
-                      
-                      
-                    </div>
-                    </div>
-                </div>
-                <FooterPage />
-            </div>
-
-        );
-    }
+  return (
+    <div>
+      <Header />
+      <Navbar />
+      <TopBar name="Shop Bestsellers" value={str_bestsellers}></TopBar>
+      <div style={{ "margin-bottom": "5%" }}>
+        <div style={{ display: "flex" }}>
+          <div className="filters">
+            <FictionAndNonFictionFilters getFilter={setGenres}></FictionAndNonFictionFilters>
+          </div>
+          <div style={{ display: "flex", "flex-wrap": "wrap" }}>
+            {books &&
+              books.map((book) => <ProductCard props={book}></ProductCard>)}
+          </div>
+        </div>
+      </div>
+      <Pagination
+          activePage={activePage}
+          itemsCountPerPage={20}
+          totalItemsCount={20}
+          pageRangeDisplayed={5}
+          onChange={handlePageChange}
+        />
+      <FooterPage />
+    </div>
+  );
 }
 
 export default Bestsellers;

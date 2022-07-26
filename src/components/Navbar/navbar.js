@@ -5,6 +5,8 @@ import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SearchBar from "../Searchbar/searchBar.js"
+
 import {
   Navbar,
   Nav,
@@ -65,16 +67,8 @@ const history = useHistory();
               </NavDropdown>
             </Nav>
             <Form className="d-flex navbar-form navbar-left mx-3">
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2 my-2 py-0"
-                aria-label="Search"
-              />
-              <Button bsClass="custom-btn" variant="outline-dark" size="sm">
-                Search
-              </Button>
-            </Form>
+            <Nav.Link href="/search">Search</Nav.Link>
+             </Form>
             <Nav className="mx-3">
               <Nav.Link href="/cart">Cart</Nav.Link>
               {token ? (

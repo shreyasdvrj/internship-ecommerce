@@ -24,7 +24,7 @@
   padding: 1%;
 }
 
-.b1
+.landing-b1
 {
   align-items: center;
   margin-top: 3%;
@@ -36,13 +36,13 @@
   color:black;
   border: solid 2px black;
 }
-.b1:hover
+.landing-b1:hover
 {
   background-color: black;
   color: white;
 }
 
-.b2
+.landing-b2
 {
   align-items: center;
   margin-top: 3%;
@@ -56,7 +56,7 @@
   border: solid 2px black;
 }
 
-.b2:hover
+.landing-b2:hover
 {
   background-color: black;
   color: white;

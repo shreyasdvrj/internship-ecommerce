@@ -10,10 +10,10 @@ class Landing extends React.Component {
           - Margaret Fuller
           <br />
           <Link to="/exploreFiction">
-            <button className="b1">EXPLORE FICTION</button>
+            <button className="landing-b1">EXPLORE FICTION</button>
           </Link>
           <Link to="/exploreNonFiction">
-          <button className="b2">EXPLORE NON-FICTION</button>
+          <button className="landing-b2">EXPLORE NON-FICTION</button>
           </Link>
         </div>
       </div>

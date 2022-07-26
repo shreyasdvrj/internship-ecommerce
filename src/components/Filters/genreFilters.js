@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MDBCheckbox, MDBInput } from "mdb-react-ui-kit";
 import { Query } from "mongoose";
+import './filters.css'
 
 function GenreFilters({ getFilter }) {
   const [userinfo, setUserInfo] = useState({
@@ -134,25 +135,34 @@ function GenreFilters({ getFilter }) {
         label="Spirituality and Religion"
         onChange={handleChange}
       />
+      <p></p><p></p><p></p><p></p><p></p>
+      <p className="filterHeading">Price</p>
       <input
         type="number"
         name="startPrice"
         value={price.startPrice}
+        placeholder="Start Price"
         label="Starting Price"
         id="typeNumber"
         onChange={handleChangeNumber}
-        style={{marginTop: "25px"}}
+        style={{width: '40%'}}
       />
+      <p></p>
       <input
         type="number"
         name="endPrice"
         value={price.endPrice}
+        placeholder="End Price"
         label="Ending Price"
         id="typeNumber"
         onChange={handleChangeNumber}
+        style={{width: '40%'}}
       />
-      <button style={{marginTop: '10px'}} onClick={clickQuery}>Set Price Filter</button>
-      <button style={{marginTop: '30px'}} onClick={sendQuery}>Apply Filters</button>
+      <div style = {{ display: "flex", marginTop: '5%'}}>
+      <button className = "b1" style={{marginLeft: '0px'}} onClick={clickQuery}>Set Price</button>
+      <button className = "b1" style={{marginLeft: '10px'}} onClick={sendQuery}>Apply Filters</button>
+      </div>
+      
     </div>
   );
 }

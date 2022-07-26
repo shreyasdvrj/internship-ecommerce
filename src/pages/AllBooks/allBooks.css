@@ -31,7 +31,7 @@
   
   ul.pagination li a:hover,
   ul.pagination li a.active {
-    color: #7EBDC2;
+    color: black;
   }
   
   .page-selection {

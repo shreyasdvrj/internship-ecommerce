@@ -9,13 +9,27 @@ import axios from "axios";
 import PriceFilters from "../../components/Filters/priceFilters";
 import GenreFilters from "../../components/Filters/genreFilters";
 import "../../components/Filters/filters.css";
+import Pagination from "react-js-pagination";
+import "../AllBooks/allBooks.css"
 
 const str_nonfiction =
   "Pick from heart-felt memoirs, thought provoking histories and self-help books.";
 function ExploreNonFiction() {
   const [books, setBooks] = useState([]);
   const [genres, setGenres] = useState("");
+  const [activePage, setActivePage] = useState(1);
   var [query, setQuery] = useState("");
+
+  const handlePageChange = (activePage) => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    console.log(`active page is ${activePage}`);
+    axios
+      .get(`http://localhost:5000/books/find?fiction=false&page=${activePage}&limit=20&${genres}`)
+      .then(response => {
+        setBooks(response.data.book);
+      });
+    setActivePage(activePage);
+  };
 
   useEffect(() => {
     const axiosBooks = async () => {
@@ -23,9 +37,9 @@ function ExploreNonFiction() {
       //console.log("genre is ",genres)
 
       const response = await axios(
-        `http://localhost:5000/books/find?fiction=false${genres}`
+        `http://localhost:5000/books/find?fiction=false&page=1&limit=20${genres}`
       );
-      setBooks(response.data);
+      setBooks(response.data.book);
       // console.log(query)
       // genres.map(genre => query = '&' + query + genre + '=true')
     };
@@ -42,10 +56,10 @@ function ExploreNonFiction() {
         <div style={{ display: "flex" }}>
           <div className="filters">
             <GenreFilters getFilter={setGenres}></GenreFilters>
+            {/* <p></p>
             <p></p>
             <p></p>
-            <p></p>
-            <PriceFilters></PriceFilters>
+            <PriceFilters></PriceFilters> */}
           </div>
           <div style={{ display: "flex", "flex-wrap": "wrap" }}>
             {books &&
@@ -53,6 +67,13 @@ function ExploreNonFiction() {
           </div>
         </div>
       </div>
+      <Pagination
+          activePage={activePage}
+          itemsCountPerPage={20}
+          totalItemsCount={61}
+          pageRangeDisplayed={5}
+          onChange={handlePageChange}
+        />
       <FooterPage />
     </div>
   );

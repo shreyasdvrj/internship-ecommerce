@@ -1,12 +1,6 @@
 const Books = require("../model/BookModel");
 const Review = require("../model/ReviewModel");
 const mongoose = require("mongoose");
-// function handleDuplicateKeys(key){
-//   var value;
-//   if(Array.isArray(key))
-//   value = key[key.length-1]
-//   return value;
-// }
 
 const bookCtrl = {
   getBookById: async (req, res) => {
@@ -19,39 +13,9 @@ const bookCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  getBestBooks: async (req, res) => {
-    try {
-      const book = await Books.find({ bestseller: "true" });
-      res.json(book);
-    } catch (err) {
-      return res.status(500).json({ msg: err.message });
-    }
-  },
   getAllBooks: async (req, res) => {
     try {
-      const { page,limit} = req.query;
-      const book = await Books.find().limit(limit * 1).skip((page - 1) * limit).exec();
-      const count = await Books.countDocuments();
-      res.json({
-        book,
-        totalPages: Math.ceil(count / limit),
-        currentPage: page
-      });
-    } catch (err) {
-      return res.status(500).json({ msg: err.message });
-    }
-  },
-  getFictionBooks: async (req, res) => {
-    try {
-      const book = await Books.find({ fiction: "true" }).limit(6);
-      res.json(book);
-    } catch (err) {
-      return res.status(500).json({ msg: err.message });
-    }
-  },
-  getNonFictionBooks: async (req, res) => {
-    try {
-      const book = await Books.find({ fiction: "false" }).limit(6);
+      const book = await Books.find().limit(20);
       res.json(book);
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -63,22 +27,43 @@ const bookCtrl = {
     var book;
     var g = query.startPrice;
     var l = query.endPrice;
+    const { page,limit} = req.query;
     if (!g || !l)
     {
       g = 0
       l= 75000
     }
-    console.log(JSON.stringify(query));
+    const q = JSON.stringify(query);
+    console.log(q.length)
     try {
-         if(JSON.stringify(query) == "{\"fiction\":\"true\"}")
-          {
-            book = await Books.find({ fiction: "true" }).limit(20);
-          }
-          else if(JSON.stringify(query) == "{\"fiction\":\"false\"}")
-          {
-            book = await Books.find({ fiction: "false" }).limit(20);
-          }
-          else
+        if(query.bestseller == 'true' && query.fiction == 'true')
+          book = await Books.find({ $and: [{fiction: "true" }, {bestseller: "true"}, {price: {$gt:g, $lt:l}}]}).limit(limit * 1).skip((page - 1) * limit).exec();
+    
+        else if(query.bestseller == 'true' && query.nonfiction == 'true')
+          book = await Books.find({ $and: [{fiction: "false" }, {bestseller: "true"}, {price: {$gt:g, $lt:l}}]}).limit(limit * 1).skip((page - 1) * limit).exec();
+         
+        else if(query.bestseller == 'true')
+         {
+          console.log('bestseller')
+          book = await Books.find({ $and: [{bestseller: "true"}, {price: {$gt:g, $lt:l}}]}).limit(limit * 1).skip((page - 1) * limit).exec();
+         }
+
+        if(query.all == 'true' && query.fiction == 'true')
+          book = await Books.find({ $and: [{fiction: "true" }, {price: {$gt:g, $lt:l}}]}).limit(limit * 1).skip((page - 1) * limit).exec();
+         
+        else if(query.all == 'true' && query.nonfiction == 'true')
+          book = await Books.find({ $and: [{fiction: "false" }, {price: {$gt:g, $lt:l}}]}).limit(limit * 1).skip((page - 1) * limit).exec();
+         
+        else if(query.all == 'true')
+          book = await Books.find().limit(limit * 1).skip((page - 1) * limit).exec();
+         
+        else if(q.length <=45 && query.fiction == 'true')
+          book = await Books.find({ fiction: "true" }).limit(limit * 1).skip((page - 1) * limit).exec();
+          
+        else if(q.length <=45 && query.fiction == 'false')
+          book = await Books.find({ fiction: "false" }).limit(limit * 1).skip((page - 1) * limit).exec();
+          
+        else
           {
             book = await Books.find({
               $and: [
@@ -99,12 +84,15 @@ const bookCtrl = {
                 { selfHelp: query.selfHelp },
                 { biographies: query.biographies },
               ],}]
-            }).limit(20);
+            }).limit(limit * 1).skip((page - 1) * limit).exec();
+            //const count = await Books.countDocuments();
           }
-        
-       
       
-      res.json(book.sort());
+      res.json({
+        book,
+        // totalPages: Math.ceil(count / limit),
+        currentPage: page
+      });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

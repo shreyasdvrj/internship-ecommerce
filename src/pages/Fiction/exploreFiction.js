@@ -6,9 +6,9 @@ import Navbar from "../../components/Navbar/navbar";
 import FooterPage from "../../components/Footer/footer";
 import ProductCard from "../../components/Product/productCard";
 import axios from 'axios';
-import PriceFilters from "../../components/Filters/priceFilters";
 import GenreFilters from "../../components/Filters/genreFilters";
-import "../../components/Filters/filters.css"
+import "../../components/Filters/filters.css";
+import Pagination from "react-js-pagination";
 
 const str_fiction =
   "Explore from our collection of classic masterpieces, contemporary and scientific themes, and unforgettable stories.";
@@ -17,21 +17,24 @@ function ExploreFiction() {
 
   const [books, setBooks] = useState( [] );
   const [genres, setGenres] = useState('');
-  const [prices, setPrices] = useState('');
-  var [query, setQuery] = useState('')
-
+  const [activePage, setActivePage] = useState(1);
+  
+  const handlePageChange = (activePage) => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    console.log(`active page is ${activePage}`);
+    axios
+      .get(`http://localhost:5000/books/find?fiction=true&page=${activePage}&limit=20&${genres}`)
+      .then(response => {
+        setBooks(response.data.book);
+      });
+    setActivePage(activePage);
+  };
   
   useEffect(() => {
     const axiosBooks = async () => {
-      // genres.map(genre => setQuery(query+`&${genre}=true`))
-      //console.log("genre is ",genres)
-      
-      const response = await axios(`http://localhost:5000/books/find?fiction=true${genres}&${prices}`);
-      setBooks(response.data);
-      // console.log(query)
-      // genres.map(genre => query = '&' + query + genre + '=true')
+      const response = await axios(`http://localhost:5000/books/find?fiction=true&page=1&limit=20${genres}`);
+      setBooks(response.data.book);
     };
-    //query = query.slice(0, -1) 
     axiosBooks();
   }, [genres]);
   
@@ -44,10 +47,6 @@ function ExploreFiction() {
           <div style={{ display: "flex" }}>
             <div className="filters">
               <GenreFilters getFilter = {setGenres}></GenreFilters>
-              <p></p>
-              <p></p>
-              <p></p>
-              {/* <PriceFilters getFilter = {setPrices}></PriceFilters> */}
             </div>
             <div style={{ display: "flex", "flex-wrap": "wrap" }}>
             {books && books.map((book) => (
@@ -57,6 +56,13 @@ function ExploreFiction() {
             </div>
           </div>
         </div>
+        <Pagination
+          activePage={activePage}
+          itemsCountPerPage={20}
+          totalItemsCount={61}
+          pageRangeDisplayed={5}
+          onChange={handlePageChange}
+        />
         <FooterPage />
       </div>
     );

@@ -1,84 +1,70 @@
-import React from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import "./allBooks.css"
 import TopBar from "../../components/TopBar/topBar";
 import Header from "../../components/Header/header";
 import Navbar from "../../components/Navbar/navbar";
 import FooterPage from "../../components/Footer/footer";
 import ProductCard from "../../components/Product/productCard";
 import axios from "axios";
-import PriceFilters from "../../components/Filters/priceFilters";
-import FictionAndNonFictionFilters from "../../components/Filters/fictionAndNonFictionFilters";
 import "../../components/Filters/filters.css";
 import Pagination from "react-js-pagination";
+import FictionAndNonFictionFilters from "../../components/Filters/fictionAndNonFictionFilters";
+import "./allBooks.css"
 
-const str_newReleases =
-  "Explore our widest range of fiction and non fiction books.";
+const str = "Explore our widest range of fiction and non fiction books.";
+function AllBooks() {
+  const [books, setBooks] = useState([]);
+  const [genres, setGenres] = useState("");
+  const [activePage, setActivePage] = useState(1);
+  var [query, setQuery] = useState("");
 
-class NewReleases extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { books: [], activePage: 1};
-  }
-  componentDidMount() {
+  const handlePageChange = (activePage) => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    console.log(`active page is ${activePage}`);
     axios
-      .get(`http://localhost:5000/books/all?page=1&limit=20`)
-      .then((response) => {
-        this.setState({ books: response.data.book });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-  handlePageChange = pageNumber => {
-    console.log(`active page is ${pageNumber}`);
-    axios
-      .get(`http://localhost:5000/books/all?page=${pageNumber}&limit=20`)
+      .get(`http://localhost:5000/books/find?page=${activePage}&limit=20&${genres}&all=true`)
       .then(response => {
-        this.setState({
-          books: response.data.book
-        });
+        setBooks(response.data.book);
       });
-    this.setState({ activePage: pageNumber });
+    setActivePage(activePage);
   };
-  render() {
-    return (
-      <div>
-        <Header />
-        <Navbar />
-        <TopBar name="Shop All Books" value={str_newReleases}></TopBar>
-        <div style={{ "margin-bottom": "5%" }}>
-          <div style={{ display: "flex" }}>
-            <div className="filters">
-              <FictionAndNonFictionFilters></FictionAndNonFictionFilters>
-              <p></p>
-              <p></p>
-              <p></p>
-              <PriceFilters></PriceFilters>
-            </div>
-            <div style={{ display: "flex", "flex-wrap": "wrap", marginLeft: '8%'}}>
-              {this.state.books &&
-                this.state.books.map((book) => (
-                  <ProductCard props={book}></ProductCard>
-                ))}
-            </div>
-           
+
+  useEffect(() => {
+    const axiosBooks = async () => {
+      const response = await axios(
+        `http://localhost:5000/books/find?page=1&limit=20${genres}&all=true`
+      );
+      setBooks(response.data.book);
+    };
+    axiosBooks();
+  }, [genres]);
+
+  return (
+    <div>
+      <Header />
+      <Navbar />
+      <TopBar name="Shop All Books" value={str}></TopBar>
+      <div style={{ "margin-bottom": "5%" }}>
+        <div style={{ display: "flex" }}>
+          <div className="filters">
+            <FictionAndNonFictionFilters getFilter={setGenres}></FictionAndNonFictionFilters>
           </div>
-          
+          <div style={{ display: "flex", "flex-wrap": "wrap", marginLeft: "8%" }}>
+            {books &&
+              books.map((book) => <ProductCard props={book}></ProductCard>)}
+          </div>
         </div>
-     
-        <Pagination
-          activePage={this.state.activePage}
-          itemsCountPerPage={20}
-          totalItemsCount={17180}
-          pageRangeDisplayed={5}
-          onChange={this.handlePageChange}
-        />
-      
-        <FooterPage />
       </div>
-    );
-  }
+      <Pagination
+          activePage={activePage}
+          itemsCountPerPage={20}
+          totalItemsCount={17000}
+          pageRangeDisplayed={5}
+          onChange={handlePageChange}
+        />
+      <FooterPage />
+    </div>
+  );
 }
 
-export default NewReleases;
+export default AllBooks;
