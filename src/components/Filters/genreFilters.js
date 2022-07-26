@@ -13,10 +13,15 @@ function GenreFilters({ getFilter }) {
     startPrice: "",
     endPrice: "",
   });
+  const initialState = {
+    startPrice: '',
+    endPrice: '',
+  };
   var hashmap = new Map();
   const handleChange = (e) => {
     // Destructuring
     setQuery("");
+    
     const { value, checked } = e.target;
     const { genres } = userinfo;
 
@@ -57,6 +62,7 @@ function GenreFilters({ getFilter }) {
 
   const clickQuery = async () => {
     setQuery(query + `&startPrice=${startPrice}&endPrice=${endPrice}`);
+    setPrice(initialState);
   };
 
   return (

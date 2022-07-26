@@ -23,7 +23,6 @@ const bookCtrl = {
   },
   getBookByQuery: async (req, res) => {
     var query = req.query;
-    console.log(query)
     var book;
     var g = query.startPrice;
     var l = query.endPrice;
@@ -34,7 +33,6 @@ const bookCtrl = {
       l= 75000
     }
     const q = JSON.stringify(query);
-    console.log(q.length)
     try {
         if(query.bestseller == 'true' && query.fiction == 'true')
           book = await Books.find({ $and: [{fiction: "true" }, {bestseller: "true"}, {price: {$gt:g, $lt:l}}]}).limit(limit * 1).skip((page - 1) * limit).exec();
@@ -44,11 +42,10 @@ const bookCtrl = {
          
         else if(query.bestseller == 'true')
          {
-          console.log('bestseller')
           book = await Books.find({ $and: [{bestseller: "true"}, {price: {$gt:g, $lt:l}}]}).limit(limit * 1).skip((page - 1) * limit).exec();
          }
 
-        if(query.all == 'true' && query.fiction == 'true')
+        else if(query.all == 'true' && query.fiction == 'true')
           book = await Books.find({ $and: [{fiction: "true" }, {price: {$gt:g, $lt:l}}]}).limit(limit * 1).skip((page - 1) * limit).exec();
          
         else if(query.all == 'true' && query.nonfiction == 'true')
