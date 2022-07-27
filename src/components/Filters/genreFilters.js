@@ -62,7 +62,7 @@ function GenreFilters({ getFilter }) {
 
   const clickQuery = async () => {
     setQuery(query + `&startPrice=${startPrice}&endPrice=${endPrice}`);
-    setPrice(initialState);
+  
   };
 
   return (

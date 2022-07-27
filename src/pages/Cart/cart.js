@@ -7,6 +7,7 @@ import Header from "../../components/Header/header";
 import Navigation from "../../components/Navbar/navbar";
 import TopBar from "../../components/TopBar/topBar";
 import FooterPage from "../../components/Footer/footer";
+import { ContactsOutlined } from "@material-ui/icons";
 
 class Cart extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Cart extends Component {
     this.state = {
       userid: "",
       cartItem: {},
+      flag: false,
     };
   }
 
@@ -49,16 +51,23 @@ class Cart extends Component {
     // console.log(this.state.userid);
   }
   render() {
-   console.log(this.state.cartItem.products)
+    var flag = true;
+    if (typeof(this.state.cartItem) === "undefined")
+     flag = false
     return (
       <div>
+
          <Header />
         <Navigation />
         <TopBar name="Cart" value="Items in your cart"></TopBar>
-              <CartItems />
-          <Link to='/checkout/summary'>
-          <button>Checkout</button></Link>
-          <FooterPage/>
+        { true ? (
+                <CartItems />
+               ) :
+              (
+                <p>No items</p> 
+               
+              )}
+              <FooterPage/>
       </div>
     );
   }

@@ -5,15 +5,14 @@ import ReactStars from "react-rating-stars-component";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
-const printButtonLabel = (event) => {
-  console.log(event.target.name);
-};
 class ProductInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: "",
       bookid: this.props.book._id,
+      type: "Paperback",
+      price: this.props.book.price,
     };
   }
 
@@ -31,10 +30,19 @@ class ProductInfo extends React.Component {
         console.log(error);
       });
   }
+  printButtonLabel = (event) => {
+    if (event.target.name === "Paperback") 
+    this.setState({ price: this.props.book.price });
+    else if (event.target.name === "Hardcover")
+      this.setState({ price: this.props.book.price + 100 });
+    else this.setState({ price: this.props.book.price + 50 });
+    this.setState({ type: event.target.name });
+  };
 
   addToCart = () => {
+    console.log(this.state.type);
     const review = {
-      bookid: this.state.bookid,
+      bookid: [this.state.bookid, this.state.type, this.state.price],
       userid: this.state.user.userid,
     };
     axios({
@@ -52,17 +60,14 @@ class ProductInfo extends React.Component {
         console.log(res);
       });
   };
-  hi = () => {
-    console.log("Hi");
-  };
 
   render() {
-    const price = String(this.props.book.price);
+    const price = String(this.state.price);
     var numRating = this.props.book.numRatings;
     numRating = numRating.toLocaleString("en-IN");
     var loggedIn = true;
-    if (!this.state.user)
-      loggedIn = false;
+    if (!this.state.user) loggedIn = false;
+
     return (
       <div className="pdiv">
         <ToastContainer />
@@ -86,7 +91,7 @@ class ProductInfo extends React.Component {
         <div style={{ display: "flex" }}>
           <ButtonGroup
             buttons={["Paperback", "Hardcover", "Kindle"]}
-            afterClick={printButtonLabel}
+            afterClick={this.printButtonLabel}
           />
         </div>
         {console.log(loggedIn)}
