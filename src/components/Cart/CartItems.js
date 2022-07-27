@@ -3,7 +3,7 @@ import { Component } from "react";
 import Itemcard from "./itemCard";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import "./cart.css"
+import "./cart.css";
 
 class CartItems extends Component {
   constructor(props) {
@@ -53,8 +53,32 @@ class CartItems extends Component {
       })
         .then((res) => {
           console.log("Cart Cleared");
-          toast("Cart Cleared")
-          window.location.reload(); 
+          toast("Cart Cleared");
+          window.location.reload();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  orderCheckout = async () => {
+    console.log(this.state.cartItem.products)
+    try {
+      axios({
+        method: "POST",
+        url: "http://localhost:5000/order/add",
+        data: { userid: this.state.id, items :  this.state.cartItem.products},
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => {
+          console.log("Checked Out");
+          toast("Checked Out");
+          this.handleDeleteProperty(this.state.id);
+          window.location.reload();
         })
         .catch(function (error) {
           console.log(error);
@@ -67,16 +91,19 @@ class CartItems extends Component {
     function round(value, precision) {
       var multiplier = Math.pow(10, precision || 0);
       return Math.round(value * multiplier) / multiplier;
-  }
+    }
+
     var subtotal = 0.0;
-    {this.state.cartItem.products &&
-      this.state.cartItem.products.map((item) => (
-        subtotal = subtotal + item[2]
-      ))}
-      subtotal = round(subtotal,1)
+    {
+      this.state.cartItem.products &&
+        this.state.cartItem.products.map(
+          (item) => (subtotal = subtotal + item[2])
+        );
+    }
+    subtotal = round(subtotal, 1);
     return (
       <div>
-        <ToastContainer ></ToastContainer>
+        <ToastContainer></ToastContainer>
         <div className="cart-detail">
           <div className="cart-container">
             <h2>Shopping Cart</h2>
@@ -88,10 +115,14 @@ class CartItems extends Component {
                 <h3 className="total">Total</h3>
               </div>
               {this.state.cartItem.products &&
-                this.state.cartItem.products.map((item,index) => (
+                this.state.cartItem.products.map((item, index) => (
                   <>
-                    <Itemcard props={item} index={index} userid={this.state.id} style={{ padding: "15px" }} />
-                    
+                    <Itemcard
+                      props={item}
+                      index={index}
+                      userid={this.state.id}
+                      style={{ padding: "15px" }}
+                    />
                   </>
                 ))}
               <div className="cart-summary">
@@ -107,11 +138,11 @@ class CartItems extends Component {
                     <span className="amount">&#8377;{subtotal}</span>
                   </div>
                   <p>Taxes and shipping calculated at checkout</p>
-                  <Link to="/checkout/summary">
-                    <button>Checkout</button>
-                  </Link>
+                  {/* <Link to="/checkout/summary"> */}
+                    <button onClick={this.orderCheckout}>Checkout</button>
+                  {/* </Link> */}
                   <div className="continue-shopping">
-                    <Link to="/">
+                    <Link to="/all">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -133,13 +164,6 @@ class CartItems extends Component {
             </div>
           </div>
         </div>
-
-        {/* {this.state.cartItem.products &&
-          this.state.cartItem.products.map((item) => (
-            <>
-              <Itemcard props={item} style={{ padding: "15px" }} />
-            </>
-          ))} */}
       </div>
     );
   }

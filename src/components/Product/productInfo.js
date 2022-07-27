@@ -31,7 +31,7 @@ class ProductInfo extends React.Component {
       });
   }
   printButtonLabel = (event) => {
-    if (event.target.name === "Paperback") 
+    if (event.target.name === "Kindle") 
     this.setState({ price: this.props.book.price });
     else if (event.target.name === "Hardcover")
       this.setState({ price: this.props.book.price + 100 });

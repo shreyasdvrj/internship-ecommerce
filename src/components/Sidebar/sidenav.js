@@ -5,12 +5,13 @@ import "./sidenav.css";
 import OrderHistory from "../Orders/orderHistory";
 import Account from "../Account/account";
 import ProductList from "../Orders/product";
+import { LaptopWindows } from "@material-ui/icons";
 
 export default function () {
   const category = window.location.pathname.split("/")[2];
-  console.log(category)
+  // window.location.reload();
   return (
-    <div className="page">
+    <div className="page"> 
       <div className="product-list-div">
         <div className="filter">
           <Link

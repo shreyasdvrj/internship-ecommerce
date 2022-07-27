@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import axios from "axios";
 import react, { Component } from "react";
 import CartItems from "../../components/Cart/CartItems";
@@ -7,7 +6,7 @@ import Header from "../../components/Header/header";
 import Navigation from "../../components/Navbar/navbar";
 import TopBar from "../../components/TopBar/topBar";
 import FooterPage from "../../components/Footer/footer";
-import { ContactsOutlined } from "@material-ui/icons";
+
 
 class Cart extends Component {
   constructor(props) {
@@ -41,14 +40,10 @@ class Cart extends Component {
           .catch(function (error) {
             console.log(error);
           });
-        // this.setState({ userid: response.data });
       })
       .catch(function (error) {
         console.log(error);
       });
-
-    // const userid = this.state.userid;
-    // console.log(this.state.userid);
   }
   render() {
     var flag = true;

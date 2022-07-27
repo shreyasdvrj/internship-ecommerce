@@ -25,6 +25,7 @@ import Summary from "./pages/Checkout/summary";
 import Address from "./pages/Checkout/address";
 import Payment from "./pages/Checkout/payment";
 import Test from "./test";
+import OrderHistory from "./components/Orders/orderHistory";
 import Sidebar from "./components/Sidebar/sidenav";
 import ProductList from "./components/Orders/product";
 import SearchResult from "./pages/SearchResult/searchResult";
@@ -60,7 +61,7 @@ function App() {
             <Signup />
           </Route>
           <Route path="/test">
-            <Test />
+            <OrderHistory />
           </Route>
           <Route path="/product">
             <ProductDetail />

@@ -1,0 +1,13 @@
+.detail {
+    margin-left: 25%;
+    width: 50%;
+
+}
+.detail h5 {
+    text-align: center;
+    width: 50%;
+}
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+}
