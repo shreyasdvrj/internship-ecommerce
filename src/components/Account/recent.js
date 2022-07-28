@@ -10,15 +10,17 @@ class Recent extends React.Component {
     this.state = {
       userid: this.props.userid,
       recent: [],
-      book: {},
     };
   }
   componentDidMount() {
-    console.log("12354", this.props.userid);
+    console.log("1124", this.props.userid);
+    var userid = this.props.userid;
+    if (this.props.userid == null)
+      userid = "test"
     axios({
       method: "POST",
       url: "http://localhost:5000/recent/all",
-      data: { userid: this.props.userid },
+      data: { userid: userid },
       withCredentials: true,
       headers: { "Content-Type": "application/json" },
     })

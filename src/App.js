@@ -36,11 +36,6 @@ function App() {
   var loggedIn = false;
   if (token) loggedIn = true;
 
-  const notify = () => {
-    // inbuilt-notification
-    toast.error("Please login first");
-  };
-
   return (
     <div className="App">
       <BrowserRouter>

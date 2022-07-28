@@ -52,13 +52,11 @@ const Signup = () => {
         })
         .catch((res,error) => {
           console.log("Problem submitting New Post", error);
-          toast(res.response.data.msg)
+          toast.warn(res.response.data.msg)
           window.location.reload()
           setUser(() => "");
-          // toast("Problem registering, email already taken");
 
         });
-      //  window.location.href='/login'
      
     } else {
       alert("Reload Page");

@@ -42,12 +42,12 @@ const Login = () => {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },
       }).then((res) => {
-
         history.push("/")
+        window.location.reload()
       })
       .catch((res, error) => {
         console.log("Login error");
-        toast(res.response.data.msg, {
+        toast.error(res.response.data.msg, {
           toastId: customId});
       });
     } else {

@@ -94,10 +94,10 @@ const FooterPage = () => {
               style={{ width: "60px" }}
             />
             <p>
-              <a style={{textDecoration: 'None'}} href="/profile">Your Account</a>
+              <a style={{textDecoration: 'None'}} href="/profile/account">Your Account</a>
             </p>
             <p>
-              <a style={{textDecoration: 'None'}} href="/order">Order Status</a>
+              <a style={{textDecoration: 'None'}} href="/profile/orders">Order Status</a>
             </p>
             <p>
               <a style={{textDecoration: 'None'}} href="/returns">Returns and Refunds</a>

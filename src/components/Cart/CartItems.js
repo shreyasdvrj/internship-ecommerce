@@ -53,7 +53,7 @@ class CartItems extends Component {
       })
         .then((res) => {
           console.log("Cart Cleared");
-          toast("Cart Cleared");
+          toast.success("Cart Cleared");
           window.location.reload();
         })
         .catch(function (error) {

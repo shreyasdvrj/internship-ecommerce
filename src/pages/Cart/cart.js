@@ -63,7 +63,7 @@ class Cart extends Component {
               <>
                 <h5>No items in your cart</h5>
                 <br/>
-                <div className="continue-shopping" style={{marginLeft : '44%'}}>
+                <div className="continue-shopping" style={{marginLeft : '43%'}}>
                   <Link to="/all">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
