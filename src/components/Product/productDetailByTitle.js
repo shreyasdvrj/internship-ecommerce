@@ -21,8 +21,9 @@ function ProductDetailByTitle()  {
         const response = await axios(
           `http://localhost:5000/books/byTitle?title=${t}`
         )
-        
-          setBooks(response.data);
+         
+            setBooks(response.data);
+         
         
         //console.log(books);
       };

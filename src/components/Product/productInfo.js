@@ -77,9 +77,13 @@ class ProductInfo extends React.Component {
   };
 
   render() {
-    const price = String(this.state.price);
+    var flag = false;
+    if(typeof(this.state.price)!='undefined')
+      flag = true;
+    var price = String(this.state.price);
     var numRating = this.props.book.numRatings;
-    numRating = numRating.toLocaleString("en-IN");
+    if(typeof(numRating)!='undefined')
+      numRating = numRating.toLocaleString("en-IN");
     var loggedIn = true;
     if (!this.state.user) loggedIn = false;
 
@@ -89,17 +93,26 @@ class ProductInfo extends React.Component {
         <h1 className="book-name">{this.props.book.title}</h1>
         <h2 className="book-author">{this.props.book.author}</h2>
         <strong>
-          <p className="book-desc">&#8377;{price}</p>
+          {flag ? <p className="book-desc">&#8377;{price}</p> : <p>&#8377;1150</p>}
         </strong>
         <div style={{ display: "flex" }}>
         {console.log(this.props.book.rating)}
+
+        {typeof(this.props.rating) != 'undefined' ? 
           <ReactStars
             count={5}
             value={this.props.book.rating}
             size={24}
             edit={false}
             activeColor="#ffd700"
-          />
+          /> : <ReactStars
+          count={5}
+          value={4}
+          size={24}
+          edit={false}
+          activeColor="#ffd700"
+        />}
+        
           
           <p className="book-rating">{numRating} Voters</p>
         </div>
