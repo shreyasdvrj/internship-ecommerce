@@ -56,7 +56,7 @@ function App() {
             <Signup />
           </Route>
           <Route path="/test">
-            <OrderHistory />
+            <Test />
           </Route>
           <Route path="/product">
             <ProductDetail />

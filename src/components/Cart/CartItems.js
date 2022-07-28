@@ -3,6 +3,7 @@ import { Component } from "react";
 import Itemcard from "./itemCard";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import Modal from "../Modal/modal";
 import "./cart.css";
 
 class CartItems extends Component {
@@ -11,6 +12,7 @@ class CartItems extends Component {
     this.state = {
       id: "",
       cartItem: {},
+      openModal: false,
     };
   }
 
@@ -87,6 +89,18 @@ class CartItems extends Component {
       console.error(err);
     }
   };
+    wait= (ms) => {
+    var start = new Date().getTime();
+    var end = start;
+    while(end < start + ms) {
+      end = new Date().getTime();
+   }
+ }
+  checkout = () => {
+    this.setState({openModal : true})
+    
+    setTimeout(() => {  this.orderCheckout(); }, 4000);
+  }
   render() {
     function round(value, precision) {
       var multiplier = Math.pow(10, precision || 0);
@@ -139,8 +153,12 @@ class CartItems extends Component {
                   </div>
                   <p>Taxes and shipping calculated at checkout</p>
                   {/* <Link to="/checkout/summary"> */}
-                    <button onClick={this.orderCheckout}>Checkout</button>
+                    <button onClick={this.checkout}>Checkout</button>
                   {/* </Link> */}
+                  <Modal 
+        open={this.state.openModal} 
+        orderid ={this.state.cartItem._id}
+        />
                   <div className="continue-shopping">
                     <Link to="/all">
                       <svg

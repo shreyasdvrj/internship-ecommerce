@@ -31,7 +31,6 @@ const cartCtrl = {
   },
   clearCart: async (req, res) => {
     try {
-      console.log(req.body.userid);
       await Cart.deleteOne({ userid: req.body.userid });
       return res.status(200).json({ success: true, msg: "Cart Cleared" });
     } catch (err) {
