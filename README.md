@@ -3,7 +3,7 @@
 
 An ecommerce store for books, built with MERN Stack. 
 
-![App Screenshot](website.jpg)
+![App Screenshot](website.JPG)
 ## Steps to run the project
 
 For Client Side
@@ -34,5 +34,5 @@ For Backend
 
 ## Dataset
 
-Goodread [dataset](https://linktodocumentation) with 20000+ books
+GoodReads Best Books Ever [dataset](https://zenodo.org/record/4265096#.YuLlGnZBxnJ) refined to around 20000+ books
 
