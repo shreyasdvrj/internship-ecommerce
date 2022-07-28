@@ -25,7 +25,6 @@ const userCtrl = {
   loginUser: async (req, res) => {
     try {
       const { email, password } = req.body;
-      console.log("In login");
       const user = await Users.findOne({ email: email });
       if (!user) return res.status(400).json({ msg: "User does not exist." });
 
@@ -41,7 +40,6 @@ const userCtrl = {
       // res.cookie('jwt', token,
       // {  httpOnly: true,
       //   origin: 'http://localhost:3000'})
-      console.log("Works");
       res.json({ user: user._id, isAuth: true, msg: "Logged In" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });

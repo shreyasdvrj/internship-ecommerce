@@ -50,7 +50,6 @@ function App() {
               <Header />
               <Navigation />
             </div>
-            <ToastContainer />
             <Landing />
             <BestsellersCarousel></BestsellersCarousel>
             <Footer />

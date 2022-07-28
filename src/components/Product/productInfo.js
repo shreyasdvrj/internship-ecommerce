@@ -25,6 +25,20 @@ class ProductInfo extends React.Component {
     })
       .then((response) => {
         this.setState({ user: response.data });
+        const userid = response.data.userid;
+        axios({
+          method: "POST",
+          url: "http://localhost:5000/recent/add",
+          data: { userid : userid, product : this.state.bookid },
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        })
+          .then((res) => {
+            console.log(res)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       })
       .catch(function (error) {
         console.log(error);

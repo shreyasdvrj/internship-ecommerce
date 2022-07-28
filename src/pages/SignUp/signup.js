@@ -22,21 +22,19 @@ const Signup = () => {
   const history = useHistory();
   const [user, setUser] = useState({
     username: "",
-    // lastname: "",
     email: "",
     password: "",
-    // password2: "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({
-      ...user, //spread operator
+      ...user, 
       [name]: value,
     });
   };
 
-  //register function
-  const egister = () => {
+
+  const register = () => {
     const { username, email, password } = user;
     console.log(user);
     if (username && email && password) {
@@ -49,18 +47,16 @@ const Signup = () => {
         .then((res) => {
           toast("Success");
           console.log(res);
-          console.log(res.data.message);
           history.push("/login");
-          console.log("To login");
           
         })
         .catch((res,error) => {
           console.log("Problem submitting New Post", error);
-          console.log(res)
+          toast(res.response.data.msg)
+          window.location.reload()
           setUser(() => "");
           // toast("Problem registering, email already taken");
-          window.location.reload();
-          console.log("To login");
+
         });
       //  window.location.href='/login'
      
@@ -118,20 +114,12 @@ const Signup = () => {
                   value={user.password}
                   onChange={handleChange}
                 />
-                {/* <CDBInput
-                  material
-                  name="password2"
-                  placeholder="Confirm Password"
-                  type="password"
-                  value={user.password2}
-                  onChange={handleChange}
-                /> */}
 
                 <CDBBtn
                   color="dark"
                   outline
                   className="btn-block my-3 mx-auto"
-                  onClick={egister}
+                  onClick={register}
                 >
                   Register
                 </CDBBtn>

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const orderSchema = new mongoose.Schema({
+const recentSchema = new mongoose.Schema({
     userid: {
         type: String,
         required: true,
@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema({
         required: true,
     },
 }, {
-    collection: 'order'
+    collection: 'recent'
 });
 
-module.exports = mongoose.model('Order', orderSchema)
+module.exports = mongoose.model('Recent', recentSchema)

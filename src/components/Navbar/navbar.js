@@ -30,7 +30,7 @@ const history = useHistory();
     .then((res) => {
       toast("Logged Out");
       history.push("/")
-      console.log(res);
+      window.location.reload();
     })
     .catch((err) => {
       console.log(err)
@@ -74,7 +74,7 @@ const history = useHistory();
               <Nav.Link href="/cart">Cart</Nav.Link>
               {token ? (
                 <>
-                <Nav.Link href="/profile">Profile</Nav.Link>
+                <Nav.Link href="/profile/account">Profile</Nav.Link>
                 <Nav.Link onClick={logout}>Logout</Nav.Link>
                 </>
               ) : (

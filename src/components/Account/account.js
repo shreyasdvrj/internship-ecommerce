@@ -1,50 +1,68 @@
 import React from "react";
 import axios from "axios";
 import "./account.css";
+import Recent from "./recent";
 
-const Account = () => {
-  const [user, setUser] = React.useState({});
-  React.useEffect(() => {
+class Account extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+      recent: [],
+    };
+  }
+  componentDidMount() {
     axios({
       method: "GET",
       url: "http://localhost:5000/users/verify",
       withCredentials: true,
-    }).then((response) => {
-      setUser(response.data);
-    });
-  }, []);
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => {
+        this.setState({ user: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  render() {
+    return (
+      <div>
+        <h2>Profile Details</h2>
+        <hr />
+        <br />
+        <div className="accountdetail">
+          <div className="detail-item">
+            <h5 className="square border border-4 px-4 py-2">Email</h5>
+            <h5 className="square border border-4 px-4 py-2">
+              {this.state.user.email}
+            </h5>
+          </div>
+          <br />
+          <div className="detail-item">
+            <h5 className="square border border-4 px-4 py-2">Username</h5>
+            <h5 className="square border border-4 px-4 py-2">
+              {this.state.user.username}
+            </h5>
+          </div>
+          <br />
 
-  return (
-    <div>
-      <h2>Profile Details</h2>
-      <hr />
-      <br />
-      <div className="detail">
-        <div className="detail-item">
-          <h5 className="square border border-4 px-4 py-2">Email</h5>
-          <h5 className="square border border-4 px-4 py-2">{user.email}</h5>
+          <div className="detail-item">
+            <h5 className="square border border-4 px-4 py-2">Joined</h5>
+            <h5 className="square border border-4 px-4 py-2">
+              {String(this.state.user.createdAt).slice(0, 10)}
+            </h5>
+          </div>
+          <br />
         </div>
         <br />
-        <div className="detail-item">
-          <h5 className="square border border-4 px-4 py-2">Username</h5>
-          <h5 className="square border border-4 px-4 py-2">{user.username}</h5>
-        </div>
+        <h2>Recently Viewed</h2>
+        <hr />
         <br />
-
-        <div className="detail-item">
-          <h5 className="square border border-4 px-4 py-2">Joined</h5>
-          <h5 className="square border border-4 px-4 py-2">
-            {String(user.createdAt).slice(0, 10)}
-          </h5>
-        </div>
-        <br />
+        <Recent userid = {this.state.user._id} />
       </div>
-      <br/>
-      <h2>Recently Viewed</h2>
-      <hr />
-      <br />
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Account;

@@ -17,6 +17,7 @@ import {
 import Waves from "../../components/Wave/wave";
 import "./login.css";
 
+const customId = "custom-id-yes";
 const Login = () => {
   const history = useHistory();
   const [user, setUser] = useState({
@@ -41,30 +42,13 @@ const Login = () => {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },
       }).then((res) => {
-        toast("Logged In")
+
         history.push("/")
-      //   if (res.data.isAuth) {
-      //     toast("Logged In");
-      //     axios({
-      //       method: "GET",
-      //       url: "http://localhost:5000/users/profile",
-      //     }).then((res) => {
-      //       console.log(res)
-      //   })
-      //   .catch((error) => {
-      //     console.log("error");
-      //     console.log(error)
-      //   })
-      // }
-      //   else
-      //   {
-      //     toast(res.data.message);
-      //     setUser(() => "");
-      //   }
       })
       .catch((res, error) => {
         console.log("Login error");
-        console.log(res);
+        toast(res.response.data.msg, {
+          toastId: customId});
       });
     } else {
       alert("invalid input");
@@ -74,7 +58,7 @@ const Login = () => {
     <div>
       <Header />
       <Navbar />
-      <ToastContainer />
+      <ToastContainer closeOnClick = 'true' limit = {1}/>
       <br />
       <div className="Form">
         <CDBContainer>
