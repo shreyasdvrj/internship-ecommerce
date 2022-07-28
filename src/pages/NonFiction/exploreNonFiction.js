@@ -6,7 +6,6 @@ import Navbar from "../../components/Navbar/navbar";
 import FooterPage from "../../components/Footer/footer";
 import ProductCard from "../../components/Product/productCard";
 import axios from "axios";
-import PriceFilters from "../../components/Filters/priceFilters";
 import GenreFilters from "../../components/Filters/genreFilters";
 import "../../components/Filters/filters.css";
 import Pagination from "react-js-pagination";

@@ -29,6 +29,7 @@ import OrderHistory from "./components/Orders/orderHistory";
 import Sidebar from "./components/Sidebar/sidenav";
 import ProductList from "./components/Orders/product";
 import SearchResult from "./pages/SearchResult/searchResult";
+import ProductDetailByTitle from "./components/Product/productDetailByTitle";
 
 function App() {
   var token = Cookies.get("jwt");
@@ -65,6 +66,9 @@ function App() {
           </Route>
           <Route path="/product">
             <ProductDetail />
+          </Route>
+          <Route path="/byTitle/:t">
+            <ProductDetailByTitle />
           </Route>
           <Route path="/cart">
             <Cart />

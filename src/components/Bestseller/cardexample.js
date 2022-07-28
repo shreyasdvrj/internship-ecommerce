@@ -5,24 +5,28 @@ import {
 } from "react-stacked-center-carousel";
 import "./Slide.css";
 import { Slide } from "./Slide";
+import ProductCard from "../Product/productCard.js"
 
 const data = [
   {
-    image: "https://images-na.ssl-images-amazon.com/images/I/81l3rZK4lnL.jpg",
+    image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1572261616l/52892857._SX318_SY475_.jpg",
+    link: "http://localhost:3000/byTitle/The%20Color%20Purple"
     
   },
   {
-    image: "https://images-na.ssl-images-amazon.com/images/I/71l9pCV99FL.jpg",
-    
+    image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1572098085l/18135._SY475_.jpg",
+    link: "http://localhost:3000/byTitle/Romeo%20and%20Juliet"
   },
   {
-    image: "https://images-na.ssl-images-amazon.com/images/I/81TKuaRtrmL.jpg",
-    
+    image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865542l/18144590._SY475_.jpg",
+    link: "http://localhost:3000/byTitle/The%20Alchemist"
   },
   {
-    image: "https://images-na.ssl-images-amazon.com/images/I/71cgoQH0zrL.jpg",
-   
-  }
+    image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1382846449l/7144.jpg",
+    
+    link: "http://localhost:3000/byTitle/Crime%20and%20Punishment"
+  },
+  
 ];
 
 function Pagination(props) {
@@ -67,9 +71,6 @@ const CardExample = () => {
   };
 
   const updatePosition = (index) => {
-    console.log("🚀 ~ ition ~ index", index);
-    console.log("🚀 ~centerSlideDataIndex--111", centerSlideDataIndex);
-    console.log("🚀 subtract", index - centerSlideDataIndex);
     ref?.current?.swipeTo(index - centerSlideDataIndex);
   };
 

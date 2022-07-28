@@ -29,6 +29,7 @@ class ProductInfo extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+      
   }
   printButtonLabel = (event) => {
     if (event.target.name === "Kindle") 
@@ -77,6 +78,7 @@ class ProductInfo extends React.Component {
           <p className="book-desc">&#8377;{price}</p>
         </strong>
         <div style={{ display: "flex" }}>
+        {console.log(this.props.book.rating)}
           <ReactStars
             count={5}
             value={this.props.book.rating}
@@ -84,6 +86,7 @@ class ProductInfo extends React.Component {
             edit={false}
             activeColor="#ffd700"
           />
+          
           <p className="book-rating">{numRating} Voters</p>
         </div>
         <p className="book-desc">{this.props.book.description}</p>

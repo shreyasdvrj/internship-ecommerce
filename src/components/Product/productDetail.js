@@ -14,7 +14,6 @@ const ProductDetail =() => {
 
         return (
             <div>
-                {/* {console.log("rating",bookDetail.props.likedPercent)} */}
                 <Header></Header>
                 <Navbar></Navbar>
                 <div className="product-div">

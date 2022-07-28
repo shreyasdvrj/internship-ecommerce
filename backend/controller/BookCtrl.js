@@ -13,6 +13,16 @@ const bookCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+  getBookByTitle: async (req, res) => {
+    try {
+      var query = req.query;
+      var t = query.title;
+      const book = await Books.findOne({title : t});
+      res.json(book);
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
   getAllBooks: async (req, res) => {
     try {
       const book = await Books.find().limit(20);

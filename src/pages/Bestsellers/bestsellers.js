@@ -10,6 +10,8 @@ import "../../components/Filters/filters.css";
 import Pagination from "react-js-pagination";
 import FictionAndNonFictionFilters from "../../components/Filters/fictionAndNonFictionFilters";
 import "../AllBooks/allBooks.css"
+import { StackedCarousel } from 'react-stacked-carousel'
+import 'react-stacked-carousel/dist/index.css';
 
 const str_bestsellers =
   "These bestselling books should be on everyone's reading list";
@@ -34,7 +36,7 @@ function Bestsellers() {
     const axiosBooks = async () => {
       const response = await axios(
         `http://localhost:5000/books/find?page=1&limit=20${genres}&bestseller=true`
-      );
+      )
       setBooks(response.data.book);
     };
     
@@ -52,6 +54,7 @@ function Bestsellers() {
             <FictionAndNonFictionFilters getFilter={setGenres}></FictionAndNonFictionFilters>
           </div>
           <div style={{ display: "flex", "flex-wrap": "wrap" }}>
+            
             {books &&
               books.map((book) => <ProductCard props={book}></ProductCard>)}
           </div>

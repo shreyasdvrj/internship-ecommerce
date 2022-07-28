@@ -12,7 +12,7 @@ export const Slide = React.memo(function (StackedCarouselSlideProps) {
   } = StackedCarouselSlideProps;
 
   const coverImage = data[dataIndex].image;
-  const text = data[dataIndex].text;
+  const link = data[dataIndex].link;
 
   return (
     <div className="card-card" draggable={false}>
@@ -26,13 +26,14 @@ export const Slide = React.memo(function (StackedCarouselSlideProps) {
       </div>
       <div className="detail fill">
         <div className="discription">
+        <a href={link} target="_blank" rel="noreferrer">
           <img
             style={{ width: '100%', height : '100%' }}
             alt="j"
             className="cover-image"
             src={coverImage}
-          />
-          <p>{text}</p>
+          /></a>
+         
         </div>
       </div>
     </div>
