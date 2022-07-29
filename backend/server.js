@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 
 // Routes
 app.get("/", function (req, res) {
-    res.status(200).send(`Welcome to login , sign-up api`);
+    res.status(200).send(`Welcome to StoryHouse`);
   });
   
 app.use('/users', userRouter)
@@ -37,7 +37,8 @@ app.use('/cart', cartRouter)
 app.use('/order', orderRouter)
 app.use('/recent',recentRouter)
 //MongoDb connection
-mongoose.connect('mongodb://127.0.0.1:27017/StoryHouse', { useNewUrlParser : true})
+// mongoose.connect('mongodb+srv://shreyas:United_1878@cluster0.0txxy.mongodb.net/StoryHouse?retryWrites=true&w=majority', { useNewUrlParser : true})
+mongoose.connect('mongodb://localhost:27017/StoryHouse')
 const connection = mongoose.connection;
 
 connection.once('open', function() {

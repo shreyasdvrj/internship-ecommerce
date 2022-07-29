@@ -26,8 +26,6 @@ class ProductInfo extends React.Component {
       .then((response) => {
         this.setState({ user: response.data });
         var userid = response.data.userid;
-        if (this.props.userid == null)
-          userid = "test"
         axios({
           method: "POST",
           url: "http://localhost:5000/recent/add",
@@ -96,7 +94,7 @@ class ProductInfo extends React.Component {
           {flag ? (
             <p className="book-desc">&#8377;{price}</p>
           ) : (
-            <p>&#8377;1150</p>
+            <p  className="book-desc">&#8377;1150</p>
           )}
         </strong>
         <div style={{ display: "flex" }}>

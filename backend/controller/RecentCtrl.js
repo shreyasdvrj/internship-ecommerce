@@ -6,6 +6,8 @@ const recentCtrl = {
   recentViewed: async (req, res) => {
     try {
       var { userid, product } = req.body;
+      if (product == null)
+        return res.status(400).json({ msg: "Cannot add." });
       const filter = { userid: userid };
       if ((await Recent.countDocuments(filter)) == 0) {
         const update = { $push: { products: product } };

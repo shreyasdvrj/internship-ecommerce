@@ -8,15 +8,24 @@ class Recent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userid: this.props.userid,
+      user: "",
       recent: [],
     };
   }
   componentDidMount() {
-    console.log("1124", this.props.userid);
-    var userid = this.props.userid;
-    if (this.props.userid == null)
-      userid = "test"
+    // console.log("11124", this.props.userid);
+    // var userid = this.props.userid;
+    // if (this.props.userid == null)
+    //   userid = "test"
+      axios({
+        method: "GET",
+        url: "http://localhost:5000/users/profile",
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((response) => {
+          this.setState({ user: response.data });
+          var userid = response.data.userid;
     axios({
       method: "POST",
       url: "http://localhost:5000/recent/all",
@@ -30,6 +39,10 @@ class Recent extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render() {

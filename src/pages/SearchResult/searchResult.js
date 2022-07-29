@@ -22,7 +22,7 @@ const SearchResult = (props) => {
 
   const updateInput = async (input) => {
     const filtered = bookListDefault.filter((book) => {
-      return book.title.toLowerCase().startsWith(input.toLowerCase());
+      return book.title.toLowerCase().includes(input.toLowerCase());
     });
     setInput(input);
     setBookList(filtered);
